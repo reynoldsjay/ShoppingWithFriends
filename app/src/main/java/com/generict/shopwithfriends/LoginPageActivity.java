@@ -2,8 +2,10 @@ package com.generict.shopwithfriends;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,12 +13,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginPageActivity extends ActionBarActivity {
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Regions;
+import com.facebook.AppEventsLogger;
+
+public class LoginPageActivity extends FragmentActivity implements FacebookLoginFragment.OnFragmentInteractionListener {
 
     private Button mBackButton;
     private Button mGoButton;
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
+    private Fragment mFragment;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,12 @@ public class LoginPageActivity extends ActionBarActivity {
                 }
             }
         });
+        mFragment = (Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment_facebook_login);
+        CognitoCachingCredentialsProvider cognitoProvider = new CognitoCachingCredentialsProvider(
+                activity,    // get the context for the current activity
+                "ShoppingWithFriends",    /* Identity Pool ID */
+                Regions.US_EAST_1           /* Region */
+        );
     }
 
     @Override
@@ -64,5 +78,18 @@ public class LoginPageActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        //Haven't figured out if or how to use this
     }
 }

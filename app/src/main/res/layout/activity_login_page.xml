@@ -79,6 +79,20 @@
                 android:text="Back"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <fragment
+                android:name="com.generict.shopwithfriends.FacebookLoginFragment"
+                android:id="@+id/fragment_facebook_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
+

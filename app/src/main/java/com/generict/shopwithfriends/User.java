@@ -4,6 +4,8 @@ package com.generict.shopwithfriends;
  * Created by vignesh on 1/29/15.
  */
 
+
+
 public class User {
 
         private String username;
