@@ -4,5 +4,11 @@
     <string name="app_name">ShopWithFriends</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="login_button">Login</string>
+    <string name="registration_button">Registration</string>
+    <string name="registrationUnavailableToast">Registration unavailable right now!</string>
+    <string name="title_activity_application_home">ApplicationHome</string>
+    <string name="incorrectLoginToast">"Incorrect login details. Please try again.</string>
+    <string name="title_activity_login_page">LoginPageActivity</string>
 
 </resources>
