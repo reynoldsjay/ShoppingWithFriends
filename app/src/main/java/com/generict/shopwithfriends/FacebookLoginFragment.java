@@ -104,5 +104,4 @@ public class FacebookLoginFragment extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 }
