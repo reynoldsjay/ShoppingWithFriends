@@ -1,4 +1,4 @@
-package com.generict.shopwithfriends;
+package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,42 +8,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginPageActivity extends ActionBarActivity {
 
-    private Button mBackButton;
-    private Button mGoButton;
-    private EditText mUsernameEditText;
-    private EditText mPasswordEditText;
+public class LoginRegistrationActivity extends ActionBarActivity {
 
+    private Button mLoginButton;
+    private Button mRegistrationButton;
+    private TextView mWelcomeTextView;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_registration);
+        mLoginButton = (Button) findViewById(R.id.login_button);
+        mRegistrationButton = (Button) findViewById(R.id.registration_button);
+        mWelcomeTextView = (TextView) findViewById(R.id.welcome);
+        mWelcomeTextView.setText("SHOP WITH FRIENDS!\nVersion 1.0");
         final Activity activity = this;
-        setContentView(R.layout.activity_login_page);
-        mUsernameEditText = (EditText) findViewById(R.id.username_field);
-        mPasswordEditText = (EditText) findViewById(R.id.password_field);
-        mBackButton = (Button) findViewById(R.id.back_button);
-        mBackButton.setOnClickListener(new View.OnClickListener() {
+        mRegistrationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                Intent intent = new Intent(activity, LoginRegistrationActivity.class);
+                Toast.makeText(LoginRegistrationActivity.this, R.string.registrationUnavailableToast, Toast.LENGTH_SHORT).show();
+            }
+        });
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, LoginPageActivity.class);
                 startActivity(intent);
             }
         });
-        mGoButton = (Button) findViewById(R.id.go_button);
-        mGoButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                User user = new User(mUsernameEditText.getText().toString(), mPasswordEditText.getText().toString());
-                if (!user.isValid()) {
-                    Toast.makeText(LoginPageActivity.this, R.string.incorrectLoginToast, Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(activity, ApplicationHomeActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +60,7 @@ public class LoginPageActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

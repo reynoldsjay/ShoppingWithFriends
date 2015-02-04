@@ -1,4 +1,4 @@
-package com.generict.shopwithfriends;
+package com.generict.shoppingwithfriends;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.generict.shopwithfriends;
+package com.generict.shoppingwithfriends;
 
 /**
  * Created by vignesh on 1/29/15.
