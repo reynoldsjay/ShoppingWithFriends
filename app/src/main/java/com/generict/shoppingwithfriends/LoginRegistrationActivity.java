@@ -30,7 +30,8 @@ public class LoginRegistrationActivity extends ActionBarActivity {
         mRegistrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginRegistrationActivity.this, R.string.registrationUnavailableToast, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, RegistrationPageActivity.class);
+                startActivity(intent);
             }
         });
         mLoginButton.setOnClickListener(new View.OnClickListener() {

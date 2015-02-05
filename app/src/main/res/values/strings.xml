@@ -10,5 +10,6 @@
     <string name="title_activity_application_home">ApplicationHome</string>
     <string name="incorrectLoginToast">"Incorrect login details. Please try again.</string>
     <string name="title_activity_login_page">LoginPageActivity</string>
+    <string name="title_activity_registration_page">RegistrationPageActivity</string>
 
 </resources>

@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.generict.shoppingwithfriends.LoginRegistrationActivity"
+            android:name=".LoginRegistrationActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,12 +17,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.generict.shoppingwithfriends.LoginPageActivity"
+            android:name=".LoginPageActivity"
             android:label="@string/title_activity_login_page" >
         </activity>
         <activity
-            android:name="com.generict.shoppingwithfriends.ApplicationHomeActivity"
+            android:name=".ApplicationHomeActivity"
             android:label="@string/title_activity_application_home" >
+        </activity>
+        <activity
+            android:name=".RegistrationPageActivity"
+            android:label="@string/title_activity_registration_page"
+            android:parentActivityName=".LoginRegistrationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.generict.shoppingwithfriends.LoginRegistrationActivity" />
         </activity>
     </application>
 
