@@ -6,32 +6,39 @@ package com.generict.shoppingwithfriends;
 
 public class User {
 
-        private String username;
-        private String password;
+    private String email;
+    private String username;
+    private String password;
 
-        User(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
+    User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
-        public String getUsername() {
-            return username;
-        }
+    User(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 
-        public void setUsername(String username) {
-            this.username = username;
-        }
+    public String getUsername() {
+        return username;
+    }
 
-        public String getPassword() {
-            return password;
-        }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public boolean isValid() {
-            return ((username.equals("user")) && (password.equals("pass")));
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isValid() {
+        return RegisteredUsers.checkValid(this);
+    }
+
 }
-
