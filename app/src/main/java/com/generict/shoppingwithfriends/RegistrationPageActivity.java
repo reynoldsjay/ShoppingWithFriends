@@ -75,8 +75,6 @@ public class RegistrationPageActivity extends ActionBarActivity {
             return true;
         }
 
-        if (true) throw new RuntimeException("\\u0050\\u006C\\u0065\\u0061\\u0073\\u0065\\u0020\\u0073\\u0075\\u0063\\u006B\\u0020\\u006D\\u0079\\u0020\\u0064\\u0069\\u0063\\u006B");
-
         return super.onOptionsItemSelected(item);
     }
 }
