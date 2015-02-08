@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.generict.shopwithfriends"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-sdk tools:overrideLibrary="com.facebook.android" android:minSdkVersion="9" />
+=======
+    package="com.generict.shoppingwithfriends" >
+>>>>>>> 74632dc7c3c0d4605de8296fe21341f3a4600bf1
 
     <application
         android:allowBackup="true"
@@ -26,11 +30,22 @@
             android:name=".ApplicationHomeActivity"
             android:label="@string/title_activity_application_home" >
         </activity>
+<<<<<<< HEAD
 
         <activity android:name="com.facebook.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:label="@string/app_name" />
         <meta-data android:name="com.facebook.sdk.ApplicationId"   android:value="@string/app_id"/>
+=======
+        <activity
+            android:name=".RegistrationPageActivity"
+            android:label="@string/title_activity_registration_page"
+            android:parentActivityName=".LoginRegistrationActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.generict.shoppingwithfriends.LoginRegistrationActivity" />
+        </activity>
+>>>>>>> 74632dc7c3c0d4605de8296fe21341f3a4600bf1
     </application>
 
 </manifest>
