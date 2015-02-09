@@ -17,6 +17,7 @@ public class RegistrationPageActivity extends ActionBarActivity {
 
     private Button mCancelButton;
     private Button mRegisterButton;
+    private EditText mName;
     private EditText mEmail;
     private EditText mUsername;
     private EditText mPassword;
@@ -27,6 +28,7 @@ public class RegistrationPageActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
         setContentView(R.layout.activity_registration_page);
+        mName = (EditText) findViewById(R.id.name);
         mEmail = (EditText) findViewById(R.id.email);
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
@@ -43,13 +45,17 @@ public class RegistrationPageActivity extends ActionBarActivity {
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                User user = new User(mEmail.getText().toString(),mUsername.getText().toString(), mPassword.getText().toString());
-                if (RegisteredUsers.contains(user)) {
-                    Toast.makeText(RegistrationPageActivity.this, R.string.userAlreadyExists, Toast.LENGTH_SHORT).show();
+                if (mName.getText().toString().equals("") || mEmail.getText().toString().equals("") || mUsername.getText().toString().equals("") || mPassword.getText().toString().equals("")){
+                    Toast.makeText(RegistrationPageActivity.this, R.string.fillAll, Toast.LENGTH_SHORT).show();
                 } else {
-                    RegisteredUsers.add(user);
-                    Intent intent = new Intent(activity, LoginPageActivity.class);
-                    startActivity(intent);
+                    User user = new User(mName.getText().toString(), mEmail.getText().toString(), mUsername.getText().toString(), mPassword.getText().toString());
+                    if (RegisteredUsers.contains(user)) {
+                        Toast.makeText(RegistrationPageActivity.this, R.string.userAlreadyExists, Toast.LENGTH_SHORT).show();
+                    } else {
+                        RegisteredUsers.add(user);
+                        Intent intent = new Intent(activity, LoginPageActivity.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
