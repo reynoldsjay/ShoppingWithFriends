@@ -9,7 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-
+/**
+ * App home view
+ * @author Vignesh
+ * @version 1.0
+ */
 public class ApplicationHomeActivity extends ActionBarActivity {
 
     private Button mLogout;

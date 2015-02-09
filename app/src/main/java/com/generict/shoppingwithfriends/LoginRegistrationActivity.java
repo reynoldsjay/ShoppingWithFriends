@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * App start page with login or register
+ * @author Vignesh
+ * @version 1.0
+ */
 public class LoginRegistrationActivity extends ActionBarActivity {
 
     private Button mLoginButton;
@@ -27,6 +31,7 @@ public class LoginRegistrationActivity extends ActionBarActivity {
         mWelcomeTextView = (TextView) findViewById(R.id.welcome);
         mWelcomeTextView.setText("SHOP WITH FRIENDS!\nVersion 1.0");
         final Activity activity = this;
+        // bring up registration page
         mRegistrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +39,7 @@ public class LoginRegistrationActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+        // bring up login page
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, LoginPageActivity.class);

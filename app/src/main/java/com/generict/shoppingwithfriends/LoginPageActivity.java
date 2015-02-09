@@ -11,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Login page view
+ * @author Vignesh
+ * @version 1.0
+ */
 public class LoginPageActivity extends ActionBarActivity {
 
     private Button mBackButton;
@@ -18,6 +23,7 @@ public class LoginPageActivity extends ActionBarActivity {
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
@@ -25,6 +31,7 @@ public class LoginPageActivity extends ActionBarActivity {
         mUsernameEditText = (EditText) findViewById(R.id.username_field);
         mPasswordEditText = (EditText) findViewById(R.id.password_field);
         mBackButton = (Button) findViewById(R.id.back_button);
+        // go back to login and registration button
         mBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, LoginRegistrationActivity.class);
@@ -34,6 +41,7 @@ public class LoginPageActivity extends ActionBarActivity {
         mGoButton = (Button) findViewById(R.id.go_button);
         mGoButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // check if user is valid and login if it is
                 User user = new User(mUsernameEditText.getText().toString(), mPasswordEditText.getText().toString());
                 if (!user.isValid()) {
                     Toast.makeText(LoginPageActivity.this, R.string.incorrectLoginToast, Toast.LENGTH_SHORT).show();

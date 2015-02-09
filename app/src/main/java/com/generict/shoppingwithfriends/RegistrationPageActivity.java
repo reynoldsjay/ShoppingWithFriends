@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+/**
+ * Registration page view
+ * @author Jay Reynolds
+ * @version 1.0
+ */
 public class RegistrationPageActivity extends ActionBarActivity {
 
 
@@ -35,7 +39,7 @@ public class RegistrationPageActivity extends ActionBarActivity {
         mCancelButton = (Button) findViewById(R.id.cancel_button);
         mRegisterButton = (Button) findViewById(R.id.done_button);
 
-
+        // cancel goes back to view with login and register buttons
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, LoginRegistrationActivity.class);
@@ -43,11 +47,14 @@ public class RegistrationPageActivity extends ActionBarActivity {
             }
         });
 
+        // done creating user goes to login page
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // makes sure username isn't taken
                 if (mName.getText().toString().equals("") || mEmail.getText().toString().equals("") || mUsername.getText().toString().equals("") || mPassword.getText().toString().equals("")){
                     Toast.makeText(RegistrationPageActivity.this, R.string.fillAll, Toast.LENGTH_SHORT).show();
                 } else {
+                    // adds user to static collections
                     User user = new User(mName.getText().toString(), mEmail.getText().toString(), mUsername.getText().toString(), mPassword.getText().toString());
                     if (RegisteredUsers.contains(user)) {
                         Toast.makeText(RegistrationPageActivity.this, R.string.userAlreadyExists, Toast.LENGTH_SHORT).show();
