@@ -1,11 +1,9 @@
 package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,26 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-<<<<<<< HEAD
 /**
  * Login page view
  * @author Vignesh
  * @version 1.0
  */
 public class LoginPageActivity extends ActionBarActivity {
-=======
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.regions.Regions;
-import com.facebook.AppEventsLogger;
 
-public class LoginPageActivity extends FragmentActivity implements FacebookLoginFragment.OnFragmentInteractionListener {
->>>>>>> cd848fda8c0fa6a410e16f0fd7acbcc40db45f2b
 
     private Button mBackButton;
     private Button mGoButton;
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
-    private Fragment mFragment;
 
 
     @Override
@@ -63,12 +53,6 @@ public class LoginPageActivity extends FragmentActivity implements FacebookLogin
                 }
             }
         });
-        mFragment = (Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment_facebook_login);
-        CognitoCachingCredentialsProvider cognitoProvider = new CognitoCachingCredentialsProvider(
-                activity,    // get the context for the current activity
-                "ShoppingWithFriends",    /* Identity Pool ID */
-                Regions.US_EAST_1           /* Region */
-        );
     }
 
     @Override
@@ -90,18 +74,5 @@ public class LoginPageActivity extends FragmentActivity implements FacebookLogin
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-        //Haven't figured out if or how to use this
     }
 }

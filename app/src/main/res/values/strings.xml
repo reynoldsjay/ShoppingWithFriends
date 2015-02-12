@@ -11,15 +11,9 @@
     <string name="incorrectLoginToast">Incorrect login details. Please try again.</string>
     <string name="userAlreadyExists">Username already exists.</string>
     <string name="title_activity_login_page">LoginPageActivity</string>
-<<<<<<< HEAD
     <string name="app_id">592995297468750</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
     <string name="title_activity_registration_page">RegistrationPageActivity</string>
-<<<<<<< HEAD
     <string name="fillAll">Fill in all fields.</string>
-=======
->>>>>>> 74632dc7c3c0d4605de8296fe21341f3a4600bf1
->>>>>>> cd848fda8c0fa6a410e16f0fd7acbcc40db45f2b
 
 </resources>

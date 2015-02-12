@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.generict.shopwithfriends"
+    package="com.generict.shoppingwithfriends"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-sdk tools:overrideLibrary="com.facebook.android" android:minSdkVersion="9" />
     package="com.generict.shoppingwithfriends" >
@@ -23,6 +23,12 @@
             android:name=".LoginPageActivity"
             android:label="@string/title_activity_login_page" >
         </activity>
+
+        <activity
+            android:name="FriendsListActivity"
+            android:label="FriendsListActivity" >
+        </activity>
+
         <activity
             android:name=".ApplicationHomeActivity"
             android:label="@string/title_activity_application_home" >

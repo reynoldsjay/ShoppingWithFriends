@@ -29,7 +29,7 @@ public class LoginRegistrationActivity extends ActionBarActivity {
         mLoginButton = (Button) findViewById(R.id.login_button);
         mRegistrationButton = (Button) findViewById(R.id.registration_button);
         mWelcomeTextView = (TextView) findViewById(R.id.welcome);
-        mWelcomeTextView.setText("SHOP WITH FRIENDS!\nVersion 1.0");
+        mWelcomeTextView.setText("SHOP WITH FRIENDS!\nVersion 1.2");
         final Activity activity = this;
         // bring up registration page
         mRegistrationButton.setOnClickListener(new View.OnClickListener() {
