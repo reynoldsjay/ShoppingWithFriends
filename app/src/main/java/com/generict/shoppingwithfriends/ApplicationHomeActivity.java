@@ -17,6 +17,7 @@ import android.widget.Button;
 public class ApplicationHomeActivity extends ActionBarActivity {
 
     private Button mLogout;
+    private Button mFriends;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,14 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         mLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, LoginRegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mFriends = (Button) findViewById(R.id.friends_button);
+        mFriends.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, FriendsListActivity.class);
                 startActivity(intent);
             }
         });

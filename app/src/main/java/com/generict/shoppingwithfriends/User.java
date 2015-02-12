@@ -14,6 +14,9 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private int rating;
+    private int numPostings;
+
 
     /**
      * Makes a user with just username and password. Used for validating user at the login screen.
@@ -40,6 +43,22 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
+    /**
+     * Makes a new user with all information.
+     *
+     * @param name name of user
+     * @param email email of user
+     * @param rating username of user
+     * @param numPostings password of user
+     */
+    User(String name, String email, int rating, int numPostings) {
+        this.name = name;
+        this.email = email;
+        this.rating = rating;
+        this.numPostings = numPostings;
+    }
+
 
     /**
      * Gets username.
