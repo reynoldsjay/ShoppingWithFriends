@@ -6,6 +6,8 @@ package com.generict.shoppingwithfriends;
  * @version 1.0
  */
 
+
+
 public class User {
 
     private String name;

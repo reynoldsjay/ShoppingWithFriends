@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/ShopWithFriends.iml" filepath="$PROJECT_DIR$/ShopWithFriends.iml" />
+=======
+>>>>>>> 74632dc7c3c0d4605de8296fe21341f3a4600bf1
       <module fileurl="file://$PROJECT_DIR$/ShoppingWithFriends.iml" filepath="$PROJECT_DIR$/ShoppingWithFriends.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
     </modules>
   </component>
 </project>
