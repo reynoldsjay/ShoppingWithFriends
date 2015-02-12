@@ -30,6 +30,12 @@ public class User {
         this.password = password;
     }
 
+    /**
+     * Makes a user with just username and password. Used for validating user at the login screen.
+     *
+     * @param username username of user
+     * @param password password of user
+     */
     User(String username, String password) {
         this.username = username;
         this.password = password;
