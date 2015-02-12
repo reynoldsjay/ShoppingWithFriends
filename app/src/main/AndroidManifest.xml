@@ -21,6 +21,10 @@
             android:label="@string/title_activity_login_page" >
         </activity>
         <activity
+            android:name=".FriendsListActivity"
+        </activity>
+
+        <activity
             android:name=".ApplicationHomeActivity"
             android:label="@string/title_activity_application_home" >
         </activity>
