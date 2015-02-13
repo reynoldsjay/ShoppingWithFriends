@@ -35,7 +35,7 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         mFriends = (Button) findViewById(R.id.friends_button);
         mFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, FriendsListActivity.class);
+                Intent intent = new Intent(activity, UsersListActivity.class);
                 startActivity(intent);
             }
         });

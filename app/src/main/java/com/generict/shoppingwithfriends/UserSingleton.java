@@ -3,7 +3,6 @@ package com.generict.shoppingwithfriends;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by JennaKwon on 2/11/15.
@@ -12,6 +11,7 @@ import java.util.Random;
 public class UserSingleton {
 
     private static UserSingleton instance = new UserSingleton();
+
     List<User> users = new ArrayList<>();
 
     /**
@@ -31,10 +31,10 @@ public class UserSingleton {
      */
     private void makeModel() {
         users.add(new User("Jenna Kwon", "jinkwon06@gmail.com", 10, 45));
-        users.add(new User("Biggy Prasad", "getbig@gmail.com", 12, 63));
-        users.add(new User("Mar DeSouza", "marmarland@gmail.com", 9, 69));
-        users.add(new User("Bae Reynolds", "jaybay@gmail.com", 6, 30));
-        users.add(new User("Brandy Brand", "brandy@gmail.com", 17, 50));
+        users.add(new User("Vignash Prasad", "getbig@gmail.com", 12, 63));
+        users.add(new User("Marissa DeSouza", "marmarland@gmail.com", 9, 69));
+        users.add(new User("Jay Reynolds", "jaybay@gmail.com", 6, 30));
+        users.add(new User("John Brand", "brandy@gmail.com", 17, 50));
         users.add(new User("John Smith", "johnsmoth@gmail.com", 45, 150));
         users.add(new User("Roger Federer", "rogerfed@gmail.com", 50, 1230));
         users.add(new User("Rafael Nadal", "rafa@gmail.com", 2, 12));
@@ -44,5 +44,5 @@ public class UserSingleton {
      * Returns a list of users
      * @return list of users
      */
-    public List<User> getUsers() { return users;}
+    public List<User> getUsers() {return users;}
 }

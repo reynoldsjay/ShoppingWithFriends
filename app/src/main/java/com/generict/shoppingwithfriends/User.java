@@ -121,4 +121,12 @@ public class User {
      * @param name
      */
     public void setName(String name) {this.name = name;}
+
+    @Override
+    public String toString() {
+        String s = "";
+        s = "Name: " + name + "\nEmail:" + email + "\nRating:"
+                + rating + "\nNumber of Postings:" + numPostings;
+        return s;
+    }
 }

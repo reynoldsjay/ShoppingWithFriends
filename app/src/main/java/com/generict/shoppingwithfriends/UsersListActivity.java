@@ -14,30 +14,36 @@ import android.widget.Toast;
 import android.widget.*;
 import android.content.Intent;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class FriendsListActivity extends ListActivity implements ActionMode.Callback {
+/**
+ * Created by Jenna Kwon
+ * TO MAKE THE LIST COMPATIBLE ACROSS ALL DEVICES, LOOK AT MASTERDETAILDEMO!
+ */
 
+
+public class UsersListActivity extends ListActivity implements ActionMode.Callback {
 
     protected Object mActionMode;
     public int selectedItem = -1;
     protected UserSingleton model = UserSingleton.getInstance();
     protected List<User> listOfUsers = model.getUsers();
     protected UserArrayAdapter adapter;
-    private Button mAddFriends;
+    private Button mAddUsers;
 
+
+    //Helpful guide:
+    //https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends_list);
 
-        //EmptyArrayList
-        List<User> listOfFriends = new ArrayList<>();
+        //set layout
+        setContentView(R.layout.activity_users_list);
 
         //Create new adaptor and set it
-        adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfFriends);
+        adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfUsers);
 
         setListAdapter(adapter);
 
@@ -54,7 +60,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
                 selectedItem = position;
 
                 // Start the CAB using the ActionMode.Callback defined above
-                FriendsListActivity.this.startActionMode(FriendsListActivity.this);
+                UsersListActivity.this.startActionMode(UsersListActivity.this);
                 view.setSelected(true);
                 return true;
             }
@@ -65,10 +71,10 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         final Activity activity = this;
 
         //Button that will lead you to adding friends
-        mAddFriends = (Button) findViewById(R.id.add_friend_button);
-        mAddFriends.setOnClickListener(new View.OnClickListener() {
+        mAddUsers = (Button) findViewById(R.id.add_user_button);
+        mAddUsers.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, FriendsListActivity.class);
+                Intent intent = new Intent(activity, UsersListActivity.class);
                 startActivity(intent);
             }
         });
@@ -76,10 +82,9 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
 
     /**
      * Handles dynamic insertion
-     * HAVE TO FIGURE OUT THE LOGISTICS HERE!
-     *
      * @param v view
      */
+    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v, String name, String email, int rating, int numPostings) {
         model.getUsers().add(new User(name, email, rating, numPostings));
         adapter.notifyDataSetChanged();
@@ -90,16 +95,17 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         super.onListItemClick(l, v, position, id);
         // Get the item that was clicked
         User o = (User) this.getListAdapter().getItem(position);
-        String keyword = o.getName();
+        String keyword = o.getUsername();
         Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_SHORT)
                 .show();
+
     }
 
     /**
      * ?
      */
     private void show() {
-        Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
+        Toast.makeText(UsersListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
     }
 
     // Called when the action mode is created; startActionMode() was called
@@ -144,7 +150,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_friends_list, menu);
+        getMenuInflater().inflate(R.menu.menu_main_list, menu);
         return true;
     }
 
@@ -160,11 +166,11 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
             return true;
         }
 
+
         Toast.makeText(this,
                 String.valueOf(getListView().getCheckedItemCount()),
                 Toast.LENGTH_LONG).show();
         return true;
+
     }
-
 }
-

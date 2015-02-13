@@ -20,8 +20,8 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         public ImageView image;
     }
 
-    public UserArrayAdapter(Activity context, List<User> us) {
-        super((Context) context, R.layout.row_layout, us);
+    public UserArrayAdapter(Activity context, int textViewResourceId, List<User> us) {
+        super((Context) context, textViewResourceId, us);
         this.context = context;
         this.users = us;
     }
@@ -43,7 +43,7 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
         User u = users.get(position);
-        String s = u.getUsername();
+        String s = u.toString();
         holder.text.setText(s);
         holder.image.setImageResource(R.drawable.yes);
         return rowView;

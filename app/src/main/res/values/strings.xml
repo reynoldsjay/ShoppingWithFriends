@@ -13,5 +13,7 @@
     <string name="title_activity_login_page">LoginPageActivity</string>
     <string name="title_activity_registration_page">RegistrationPageActivity</string>
     <string name="fillAll">Fill in all fields.</string>
+    <string name="label"> Whatever</string>
+    <string name="title_activity_friends_list">FriendsListActivity</string>
 
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="444dp"
+        android:id="@android:id/list"
+        android:background="#ffaeff00"
+        android:textSize="16sp"
+        style="@style/Base.V14.Theme.AppCompat.Light"
+        android:backgroundTint="@color/abc_search_url_text_normal"
+        android:clickable="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add selected users!"
+        android:id="@+id/add_user_button"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
