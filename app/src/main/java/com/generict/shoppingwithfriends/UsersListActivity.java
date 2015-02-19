@@ -70,24 +70,14 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
         //Activity to feed into the button
         final Activity activity = this;
 
-        //Button that will lead you to adding friends
-        mAddUsers = (Button) findViewById(R.id.add_user_button);
-        mAddUsers.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(activity, UsersListActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    /**
-     * Handles dynamic insertion
-     * @param v view
-     */
-    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
-    public void addItems(View v, String name, String email, int rating, int numPostings) {
-        model.getUsers().add(new User(name, email, rating, numPostings));
-        adapter.notifyDataSetChanged();
+//        //Button that will lead you to adding friends
+//        mAddUsers = (Button) findViewById(R.id.add_user_button);
+//        mAddUsers.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(activity, UsersListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -95,10 +85,12 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
         super.onListItemClick(l, v, position, id);
         // Get the item that was clicked
         User o = (User) this.getListAdapter().getItem(position);
-        String keyword = o.getUsername();
-        Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_SHORT)
-                .show();
-
+        FriendsListActivity.addItems(o);
+        Intent intent = new Intent(this, FriendsListActivity.class);
+        startActivity(intent);
+//        String keyword = o.getName();
+//        Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_SHORT)
+//                .show();
     }
 
     /**

@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.*;
 import android.content.Intent;
+import android.util.Log;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +24,9 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
 
     protected Object mActionMode;
     public int selectedItem = -1;
-    protected UserSingleton model = UserSingleton.getInstance();
-    protected List<User> listOfUsers = model.getUsers();
-    protected UserArrayAdapter adapter;
+    protected static UserArrayAdapter adapter;
     private Button mAddFriends;
+    static List<User> listOfFriends;
 
 
     @Override
@@ -33,16 +34,13 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends_list);
 
-        //EmptyArrayList
-        List<User> listOfFriends = new ArrayList<>();
-
+        listOfFriends = new ArrayList<User>(10);
         //Create new adaptor and set it
-        adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfFriends);
 
+        adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfFriends);
         setListAdapter(adapter);
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
         //Set list view click stuff
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -68,20 +66,22 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         mAddFriends = (Button) findViewById(R.id.add_friend_button);
         mAddFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, FriendsListActivity.class);
+                Intent intent = new Intent(activity, UsersListActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+
+
     /**
      * Handles dynamic insertion
      * HAVE TO FIGURE OUT THE LOGISTICS HERE!
      *
-     * @param v view
      */
-    public void addItems(View v, String name, String email, int rating, int numPostings) {
-        model.getUsers().add(new User(name, email, rating, numPostings));
+    public static void addItems(User user) {
+        listOfFriends.add(user);
+        Log.d("Hi", "Hi");
         adapter.notifyDataSetChanged();
     }
 
@@ -165,6 +165,5 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
                 Toast.LENGTH_LONG).show();
         return true;
     }
-
 }
 
