@@ -2,8 +2,8 @@ package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+import java.util.ArrayList;
+
 /**
- * Registration page view
  * @author Jay Reynolds
  * @version 1.0
  */
@@ -54,15 +59,25 @@ public class RegistrationPageActivity extends ActionBarActivity {
                 if (mName.getText().toString().equals("") || mEmail.getText().toString().equals("") || mUsername.getText().toString().equals("") || mPassword.getText().toString().equals("")){
                     Toast.makeText(RegistrationPageActivity.this, R.string.fillAll, Toast.LENGTH_SHORT).show();
                 } else {
-                    // adds user to static collections
-                    User user = new User(mName.getText().toString(), mEmail.getText().toString(), mUsername.getText().toString(), mPassword.getText().toString());
-                    if (RegisteredUsers.contains(user)) {
-                        Toast.makeText(RegistrationPageActivity.this, R.string.userAlreadyExists, Toast.LENGTH_SHORT).show();
-                    } else {
-                        RegisteredUsers.add(user);
-                        Intent intent = new Intent(activity, LoginPageActivity.class);
-                        startActivity(intent);
-                    }
+                    // adds user to static collection
+                    ParseUser user = new ParseUser();
+                    user.setUsername(mUsername.getText().toString());
+                    user.setPassword(mPassword.getText().toString());
+                    user.setEmail(mEmail.getText().toString());
+                    user.put("Name", mName.getText().toString());
+                    user.put("Rating", 0);
+                    user.put("Friends", new ArrayList<ParseUser>());
+                    user.put("NumPostings", 0);
+                            user.signUpInBackground(new SignUpCallback() {
+                                public void done(ParseException e) {
+                                    if (e == null) {
+                                        Intent intent = new Intent(activity, LoginPageActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(RegistrationPageActivity.this, "Invalid registration", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }
             }
         });

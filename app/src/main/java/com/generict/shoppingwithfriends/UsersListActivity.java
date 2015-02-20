@@ -2,6 +2,7 @@ package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -9,11 +10,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.*;
-import android.content.Intent;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +32,10 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
 
     protected Object mActionMode;
     public int selectedItem = -1;
-    protected UserSingleton model = UserSingleton.getInstance();
-    protected List<User> listOfUsers = model.getUsers();
+    protected List<ParseUser> listOfUsers;
     protected UserArrayAdapter adapter;
-    private Button mAddUsers;
-
+    public final String TAG = "UsersListActivity";
+    public Button mBackButton;
 
     //Helpful guide:
     //https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView//
@@ -38,15 +43,27 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        listOfUsers = new ArrayList<ParseUser>();
         //set layout
         setContentView(R.layout.activity_users_list);
-
-        //Create new adaptor and set it
-        adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfUsers);
-
-        setListAdapter(adapter);
-
+        //Create new adapter and set it
+        final Activity activity = this;
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> objects, ParseException e) {
+                if (e == null) {
+                    listOfUsers = objects;
+                    List<ParseUser> friendsList = (List<ParseUser>)ParseUser.getCurrentUser().get("Friends");
+                    for (ParseUser item : friendsList) {
+                        listOfUsers.remove(item);
+                    }
+                    listOfUsers.remove(ParseUser.getCurrentUser());
+                    adapter = new UserArrayAdapter(activity, android.R.layout.simple_list_item_1, listOfUsers);
+                    setListAdapter(adapter);
+                } else {
+                }
+            }
+        });
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         //Set list view click stuff
@@ -66,38 +83,23 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
             }
         });
 
-
-        //Activity to feed into the button
-        final Activity activity = this;
-
-//        //Button that will lead you to adding friends
-//        mAddUsers = (Button) findViewById(R.id.add_user_button);
-//        mAddUsers.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(activity, UsersListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        mBackButton = (Button) findViewById(R.id.back_button);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, FriendsListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         // Get the item that was clicked
-        User o = (User) this.getListAdapter().getItem(position);
-        FriendsListActivity.addItems(o);
+        ParseUser o = (ParseUser) this.getListAdapter().getItem(position);
+        FriendsListActivity.addFriend(o);
         Intent intent = new Intent(this, FriendsListActivity.class);
         startActivity(intent);
-//        String keyword = o.getName();
-//        Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_SHORT)
-//                .show();
-    }
-
-    /**
-     * ?
-     */
-    private void show() {
-        Toast.makeText(UsersListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
     }
 
     // Called when the action mode is created; startActionMode() was called
@@ -123,7 +125,7 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuitem1_show:
-                show();
+                Toast.makeText(UsersListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
                 // Action picked, so close the CAB
                 mode.finish();
                 return true;

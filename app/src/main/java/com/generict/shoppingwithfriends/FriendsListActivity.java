@@ -1,7 +1,10 @@
 package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -9,12 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.*;
-import android.content.Intent;
-import android.util.Log;
 
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +28,15 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     public int selectedItem = -1;
     protected static UserArrayAdapter adapter;
     private Button mAddFriends;
-    static List<User> listOfFriends;
+    public static final String TAG = "FriendListActivity";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends_list);
-
-        listOfFriends = new ArrayList<User>(10);
         //Create new adaptor and set it
-
+        ArrayList<ParseUser> listOfFriends = (ArrayList<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfFriends);
         setListAdapter(adapter);
 
@@ -76,12 +76,18 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
 
     /**
      * Handles dynamic insertion
-     * HAVE TO FIGURE OUT THE LOGISTICS HERE!
-     *
      */
-    public static void addItems(User user) {
+    public static void addFriend(ParseUser user) {
+        List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         listOfFriends.add(user);
-        Log.d("Hi", "Hi");
+        ParseUser.getCurrentUser().put("Friends", listOfFriends);
+        adapter.notifyDataSetChanged();
+    }
+
+    public static void deleteFriend(ParseUser user) {
+        List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
+        listOfFriends.remove(user);
+        ParseUser.getCurrentUser().put("Friends", listOfFriends);
         adapter.notifyDataSetChanged();
     }
 
@@ -89,17 +95,18 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         // Get the item that was clicked
-        User o = (User) this.getListAdapter().getItem(position);
-        String keyword = o.getName();
-        Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_SHORT)
-                .show();
-    }
-
-    /**
-     * ?
-     */
-    private void show() {
-        Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
+        final ParseUser o = (ParseUser) this.getListAdapter().getItem(position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Rating: " + o.get("Rating").toString() + "\n" + "Number of Postings: " + o.get("NumPostings"))
+                .setTitle(o.get("Name").toString());
+        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                deleteFriend(o);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     // Called when the action mode is created; startActionMode() was called
@@ -125,7 +132,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuitem1_show:
-                show();
+                Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
                 // Action picked, so close the CAB
                 mode.finish();
                 return true;

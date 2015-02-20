@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
+import com.parse.ParseUser;
+import com.parse.ParseException;
+
 /**
  * Login page view
  * @author Vignesh
@@ -42,13 +46,18 @@ public class LoginPageActivity extends ActionBarActivity {
         mGoButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // check if user is valid and login if it is
-                User user = new User(mUsernameEditText.getText().toString(), mPasswordEditText.getText().toString());
-                if (!user.isValid()) {
-                    Toast.makeText(LoginPageActivity.this, R.string.incorrectLoginToast, Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(activity, ApplicationHomeActivity.class);
-                    startActivity(intent);
-                }
+                String username = mUsernameEditText.getText().toString();
+                String password = mPasswordEditText.getText().toString();
+                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    public void done(ParseUser user, ParseException e) {
+                        if (user != null) {
+                            Intent intent = new Intent(activity, ApplicationHomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginPageActivity.this, R.string.incorrectLoginToast, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }

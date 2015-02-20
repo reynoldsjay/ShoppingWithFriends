@@ -9,18 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
+
 import java.util.List;
 
-public class UserArrayAdapter extends ArrayAdapter<User> {
+public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
     private final Activity context;
-    private final List<User> users;
+    private final List<ParseUser> users;
 
     static class ViewHolder {
         public TextView text;
         public ImageView image;
     }
 
-    public UserArrayAdapter(Activity context, int textViewResourceId, List<User> us) {
+    public UserArrayAdapter(Activity context, int textViewResourceId, List<ParseUser> us) {
         super((Context) context, textViewResourceId, us);
         this.context = context;
         this.users = us;
@@ -42,8 +44,8 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         }
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
-        User u = users.get(position);
-        String s = u.toString();
+        ParseUser u = users.get(position);
+        String s = u.get("Name").toString();
         holder.text.setText(s);
         holder.image.setImageResource(R.drawable.yes);
         return rowView;
