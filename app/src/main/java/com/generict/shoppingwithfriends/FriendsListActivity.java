@@ -29,6 +29,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     protected static UserArrayAdapter adapter;
     private Button mAddFriends;
     public static final String TAG = "FriendListActivity";
+    public Button mBackButton;
 
 
     @Override
@@ -70,6 +71,15 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
                 startActivity(intent);
             }
         });
+
+        mBackButton = (Button) findViewById(R.id.back_button);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, FriendsListActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -97,7 +107,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         // Get the item that was clicked
         final ParseUser o = (ParseUser) this.getListAdapter().getItem(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Rating: " + o.get("Rating").toString() + "\n" + "Number of Postings: " + o.get("NumPostings"))
+        builder.setMessage(o.getEmail() + "\nRating: " + o.get("Rating").toString() + "\n" + "Number of Postings: " + o.get("NumPostings"))
                 .setTitle(o.get("Name").toString());
         builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override

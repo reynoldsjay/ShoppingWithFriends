@@ -21,4 +21,11 @@
         android:text="Search &amp; Add Friends!"
         android:id="@+id/add_friend_button"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/back_button"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
