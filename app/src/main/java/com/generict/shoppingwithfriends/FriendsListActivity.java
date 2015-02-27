@@ -75,7 +75,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         mBackButton = (Button) findViewById(R.id.back_button);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, FriendsListActivity.class);
+                Intent intent = new Intent(activity, ApplicationHomeActivity.class);
                 startActivity(intent);
             }
         });
