@@ -53,14 +53,13 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
             public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
                     listOfUsers = objects;
-                    List<ParseUser> friendsList = (List<ParseUser>)ParseUser.getCurrentUser().get("Friends");
+                    List<ParseUser> friendsList = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
                     for (ParseUser item : friendsList) {
                         listOfUsers.remove(item);
                     }
                     listOfUsers.remove(ParseUser.getCurrentUser());
                     adapter = new UserArrayAdapter(activity, android.R.layout.simple_list_item_1, listOfUsers);
                     setListAdapter(adapter);
-                } else {
                 }
             }
         });

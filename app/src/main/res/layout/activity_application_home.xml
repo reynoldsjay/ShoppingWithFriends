@@ -23,4 +23,13 @@
         android:layout_above="@+id/logout_button"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wish List"
+        android:id="@+id/wish_list_button"
+        android:layout_above="@+id/friends_button"
+        android:layout_alignRight="@+id/logout_button"
+        android:layout_alignEnd="@+id/logout_button" />
+
 </RelativeLayout>

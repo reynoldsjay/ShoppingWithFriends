@@ -3,10 +3,10 @@
     package="com.generict.shoppingwithfriends" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.generict.shoppingwithfriends.ShoppingWithFriendsApplication"
+        android:name=".ShoppingWithFriendsApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -14,32 +14,24 @@
         <activity
             android:name=".LoginRegistrationActivity"
             android:label="@string/app_name" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".LoginPageActivity"
             android:label="@string/title_activity_login_page" >
         </activity>
-
         <activity
             android:name=".UsersListActivity"
             android:label="UsersListActivity" >
-            </activity>
-
-
+        </activity>
         <activity
             android:name=".FriendsListActivity"
             android:label="FriendsListActivity" >
-
         </activity>
-
         <activity
             android:name=".ApplicationHomeActivity"
             android:label="@string/title_activity_application_home" >
@@ -51,6 +43,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.generict.shoppingwithfriends.LoginRegistrationActivity" />
+        </activity>
+        <activity
+            android:name=".WishListActivity"
+            android:label="@string/title_activity_wish_list" >
+        </activity>
+        <activity
+            android:name=".AddToWishListActivity"
+            android:label="@string/title_activity_add_to_wish_list" >
         </activity>
     </application>
 

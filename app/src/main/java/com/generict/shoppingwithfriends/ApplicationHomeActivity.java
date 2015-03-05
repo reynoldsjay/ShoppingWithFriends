@@ -18,12 +18,20 @@ public class ApplicationHomeActivity extends ActionBarActivity {
 
     private Button mLogout;
     private Button mFriends;
+    private Button mWishListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
         setContentView(R.layout.activity_application_home);
+        mWishListButton = (Button) findViewById(R.id.wish_list_button);
+        mWishListButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, WishListActivity.class);
+                startActivity(intent);
+            }
+        });
         mLogout = (Button) findViewById(R.id.logout_button);
         mLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

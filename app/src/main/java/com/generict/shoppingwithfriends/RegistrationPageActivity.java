@@ -18,6 +18,7 @@ import com.parse.SignUpCallback;
 import java.util.ArrayList;
 
 /**
+ * Shows the registration view.
  * @author Jay Reynolds
  * @version 1.0
  */
@@ -68,16 +69,17 @@ public class RegistrationPageActivity extends ActionBarActivity {
                     user.put("Rating", 0);
                     user.put("Friends", new ArrayList<ParseUser>());
                     user.put("NumPostings", 0);
-                            user.signUpInBackground(new SignUpCallback() {
-                                public void done(ParseException e) {
-                                    if (e == null) {
-                                        Intent intent = new Intent(activity, LoginPageActivity.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(RegistrationPageActivity.this, "Invalid registration", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                    user.put("WishList", new ArrayList<Item>());
+                    user.signUpInBackground(new SignUpCallback() {
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(activity, LoginPageActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(RegistrationPageActivity.this, "Invalid registration", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });

@@ -21,6 +21,9 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Shows the current users friends.
+*/
 public class FriendsListActivity extends ListActivity implements ActionMode.Callback {
 
 
@@ -67,7 +70,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         mAddFriends = (Button) findViewById(R.id.add_friend_button);
         mAddFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, UsersListActivity.class);
+                Intent intent = new Intent(activity, AddToWishListActivity.class);
                 startActivity(intent);
             }
         });

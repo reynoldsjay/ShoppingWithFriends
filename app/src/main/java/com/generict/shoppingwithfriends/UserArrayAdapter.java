@@ -46,6 +46,7 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
         ParseUser u = users.get(position);
+        // fetches updates from cloud if needed
         try {
             u.fetchIfNeeded();
         } catch (ParseException e) {}
