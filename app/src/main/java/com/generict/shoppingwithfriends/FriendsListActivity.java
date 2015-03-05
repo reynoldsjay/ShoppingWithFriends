@@ -91,6 +91,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         listOfFriends.add(user);
         ParseUser.getCurrentUser().put("Friends", listOfFriends);
+        ParseUser.getCurrentUser().saveInBackground();
         adapter.notifyDataSetChanged();
     }
 
@@ -98,6 +99,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         listOfFriends.remove(user);
         ParseUser.getCurrentUser().put("Friends", listOfFriends);
+        ParseUser.getCurrentUser().saveInBackground();
         adapter.notifyDataSetChanged();
     }
 

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import java.util.List;
@@ -45,6 +46,9 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
         ParseUser u = users.get(position);
+        try {
+            u.fetchIfNeeded();
+        } catch (ParseException e) {}
         String s = u.get("Name").toString();
         holder.text.setText(s);
         holder.image.setImageResource(R.drawable.yes);
