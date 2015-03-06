@@ -12,6 +12,7 @@ public class Item extends ParseObject {
     public Item() {
     }
 
+    // getters and setters for name and price
     public void setName(String name) {
         put("name", name);
     }

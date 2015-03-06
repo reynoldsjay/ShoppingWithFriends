@@ -70,7 +70,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         mAddFriends = (Button) findViewById(R.id.add_friend_button);
         mAddFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(activity, AddToWishListActivity.class);
+                Intent intent = new Intent(activity, UsersListActivity.class);
                 startActivity(intent);
             }
         });
