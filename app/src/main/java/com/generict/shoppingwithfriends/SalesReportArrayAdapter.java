@@ -14,7 +14,7 @@ import com.parse.ParseException;
 import java.util.List;
 
 /**
- * Adapts Item objects for list view
+ * Adapts Sales Report objects for list view
  */
 public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
     private final Activity context;

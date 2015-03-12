@@ -5,7 +5,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 
 /**
- * Class for holding products to be added to wish lists or posts
+ * Class for holding products to be added to wish lists
  */
 @ParseClassName("Item")
 public class Item extends ParseObject {

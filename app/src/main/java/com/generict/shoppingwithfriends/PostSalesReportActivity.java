@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+/**
+ * Class to help you post sales reports
+ */
 public class PostSalesReportActivity extends ActionBarActivity {
     private Button mAddButton;
     private Button mCancelButton;

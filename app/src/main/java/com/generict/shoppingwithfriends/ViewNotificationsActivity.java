@@ -21,6 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Activity where user can view his or her notifications
+ * that is if a sales report matches an item in his or her
+ * wishlist.
+ */
 public class ViewNotificationsActivity extends ListActivity {
 
     protected static SalesReportArrayAdapter adapter;

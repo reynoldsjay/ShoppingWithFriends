@@ -4,7 +4,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
 /**
- * Class for holding products to be added to wish lists or posts
+ * Class for holding products to be added to posts
  */
 @ParseClassName("SalesReport")
 public class SalesReport extends ParseObject {
