@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:layout_gravity="center_horizontal"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/friends_button"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -20,8 +20,26 @@
         android:layout_height="wrap_content"
         android:text="View Friends!"
         android:id="@+id/friends_button"
-        android:layout_above="@+id/logout_button"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sales Report"
+        android:id="@+id/sales_report_button"
+        android:layout_above="@+id/wish_list_button"
+        android:layout_alignRight="@+id/friends_button"
+        android:layout_alignEnd="@+id/friends_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Notifications"
+        android:id="@+id/view_notifications_button"
+        android:layout_above="@+id/sales_report_button"
+        android:layout_centerHorizontal="true" />
+
 
     <Button
         android:layout_width="wrap_content"

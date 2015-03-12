@@ -17,5 +17,7 @@
     <string name="title_activity_friends_list">FriendsListActivity</string>
     <string name="title_activity_wish_list">WishListActivity</string>
     <string name="title_activity_add_to_wish_list">AddToWishListActivity</string>
+    <string name="title_activity_post_sales_report">PostSalesReportActivity</string>
+    <string name="title_activity_view_notifications">ViewNotifications</string>
 
 </resources>

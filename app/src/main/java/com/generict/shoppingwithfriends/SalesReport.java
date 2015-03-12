@@ -1,16 +1,15 @@
 package com.generict.shoppingwithfriends;
 
 import com.parse.ParseClassName;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 
 /**
  * Class for holding products to be added to wish lists or posts
  */
-@ParseClassName("Item")
-public class Item extends ParseObject {
+@ParseClassName("SalesReport")
+public class SalesReport extends ParseObject {
 
-    public Item() {
+    public SalesReport() {
     }
 
     // getters and setters for name and price
@@ -18,15 +17,19 @@ public class Item extends ParseObject {
         put("name", name);
     }
 
-    public String getName() throws ParseException {
-        return fetchIfNeeded().getString("name");
+    public String getName() {
+        return getString("name");
     }
 
     public void setPrice(int price) {
         put("price", price);
     }
 
-    public int getPrice() throws ParseException {
-            return fetchIfNeeded().getInt("price");
+    public int getPrice() {
+        return getInt("price");
     }
+
+    public void setLocation(String location) { put("location", location); }
+
+    public String getLocation() { return getString("location"); }
 }

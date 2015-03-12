@@ -13,6 +13,7 @@ public class ShoppingWithFriendsApplication extends Application {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Item.class);
-        Parse.initialize(this, "Vzefv3Hqe6B34kWwEBUGnqCBbqvfRomeIQi9TL3U", "AXBCHigmBdZLL0NHJ4tTFAiyDFis7CO6BtWfEcnV");
+        ParseObject.registerSubclass(SalesReport.class);
+        Parse.initialize(this, "nm6pIvVQ1qGqOoDWDRgcsxvasrt6LPZF7WKmQ8HM", "qfjcEM85Wpmw6ozG2Fzrmf0vE5Dyc9XOx1x6MnDd");
     }
 }

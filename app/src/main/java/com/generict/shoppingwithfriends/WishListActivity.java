@@ -3,10 +3,9 @@ package com.generict.shoppingwithfriends;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -38,9 +38,10 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
         ArrayList<Item> items = (ArrayList<Item>) ParseUser.getCurrentUser().get("WishList");
+        Log.d(TAG, String.valueOf(items));
         adapter = new ItemArrayAdapter(this, android.R.layout.simple_list_item_1, items);
+        Log.d(TAG, String.valueOf(adapter));
         setListAdapter(adapter);
-
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         //Set list view click stuff
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -84,8 +85,12 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
         // Get the item that was clicked
         final Item o = (Item) this.getListAdapter().getItem(position);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Price: " + o.getPrice())
-                .setTitle(o.getName());
+        try {
+            builder.setMessage("Price: " + o.getPrice())
+                    .setTitle(o.getName());
+        } catch (ParseException e) {
+            Log.d(TAG, e.getMessage());
+        }
         AlertDialog dialog = builder.create();
         dialog.show();
     }

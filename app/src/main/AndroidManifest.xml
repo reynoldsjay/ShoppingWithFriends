@@ -52,6 +52,14 @@
             android:name=".AddToWishListActivity"
             android:label="@string/title_activity_add_to_wish_list" >
         </activity>
+        <activity
+            android:name=".PostSalesReportActivity"
+            android:label="@string/title_activity_post_sales_report" >
+        </activity>
+        <activity
+            android:name=".ViewNotificationsActivity"
+            android:label="@string/title_activity_view_notifications" >
+        </activity>
     </application>
 
 </manifest>

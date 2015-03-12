@@ -129,7 +129,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         // Inflate a menu resource providing context menu items
         MenuInflater inflater = mode.getMenuInflater();
-        // Assumes that you have "contexual.xml" menu resources
+        // Assumes that you have "contextual.xml" menu resources
         inflater.inflate(R.menu.rowselection, menu);
         return true;
     }

@@ -19,6 +19,8 @@ public class ApplicationHomeActivity extends ActionBarActivity {
     private Button mLogout;
     private Button mFriends;
     private Button mWishListButton;
+    private Button mSalesReport;
+    private Button mViewNotifications;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,22 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         mFriends.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, FriendsListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mSalesReport = (Button) findViewById(R.id.sales_report_button);
+        mSalesReport.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, PostSalesReportActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mViewNotifications = (Button) findViewById(R.id.view_notifications_button);
+        mViewNotifications.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ViewNotificationsActivity.class);
                 startActivity(intent);
             }
         });

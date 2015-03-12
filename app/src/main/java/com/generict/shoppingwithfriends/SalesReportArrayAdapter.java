@@ -16,16 +16,16 @@ import java.util.List;
 /**
  * Adapts Item objects for list view
  */
-public class ItemArrayAdapter extends ArrayAdapter<Item> {
+public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
     private final Activity context;
-    private final List<Item> items;
+    private final List<SalesReport> items;
 
     static class ViewHolder {
         public TextView text;
         public ImageView image;
     }
 
-    public ItemArrayAdapter(Activity context, int textViewResourceId, List<Item> us) {
+    public SalesReportArrayAdapter(Activity context, int textViewResourceId, List<SalesReport> us) {
         super((Context) context, textViewResourceId, us);
         this.context = context;
         this.items = us;
@@ -47,14 +47,14 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
         }
         // fill data
         ViewHolder holder = (ViewHolder) rowView.getTag();
-        Item u = items.get(position);
+        SalesReport u = items.get(position);
         // fetches data from cloud if needed
         try {
             u.fetchIfNeeded();
-            String s = u.getName();
-            holder.text.setText(s);
-            holder.image.setImageResource(R.drawable.yes);
         } catch (ParseException e) {}
+        String s = u.getName();
+        holder.text.setText(s);
+        holder.image.setImageResource(R.drawable.yes);
         return rowView;
     }
 }
