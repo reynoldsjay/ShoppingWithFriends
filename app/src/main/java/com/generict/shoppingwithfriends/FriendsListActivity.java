@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -85,10 +84,10 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
 
     }
 
-
-
     /**
      * Handles dynamic insertion
+     *
+     * @param user clicked user
      */
     public static void addFriend(ParseUser user) {
         List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
@@ -98,6 +97,11 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Handles dynamic deletion
+     *
+     * @param user clicked user
+     */
     public static void deleteFriend(ParseUser user) {
         List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         listOfFriends.remove(user);

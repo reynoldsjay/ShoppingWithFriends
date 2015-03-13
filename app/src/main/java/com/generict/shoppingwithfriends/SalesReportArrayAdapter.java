@@ -20,11 +20,20 @@ public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
     private final Activity context;
     private final List<SalesReport> items;
 
+    /**
+     * for visualization
+     */
     static class ViewHolder {
         public TextView text;
         public ImageView image;
     }
 
+    /**
+     * Adaptor for holding sales report
+     * @param context of activity class
+     * @param textViewResourceId default id
+     * @param us list of sales reports
+     */
     public SalesReportArrayAdapter(Activity context, int textViewResourceId, List<SalesReport> us) {
         super((Context) context, textViewResourceId, us);
         this.context = context;

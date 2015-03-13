@@ -9,27 +9,54 @@ import com.parse.ParseObject;
 @ParseClassName("SalesReport")
 public class SalesReport extends ParseObject {
 
+    /**
+     * Constructor for sales report
+     */
     public SalesReport() {
     }
 
-    // getters and setters for name and price
+    /**
+     * Sets name
+     * @param name of item to be reported
+     */
     public void setName(String name) {
         put("name", name);
     }
 
+    /**
+     * Gets name
+     * @return name of item reported
+     */
     public String getName() {
         return getString("name");
     }
 
+    /**
+     * Sets price
+     * @param price of item to be reported
+     */
     public void setPrice(int price) {
         put("price", price);
     }
 
+    /**
+     * Gets price
+     * @return price of item to be reported
+     */
     public int getPrice() {
         return getInt("price");
     }
 
+
+    /*
+     * Sets location
+     * @param location of store that sells the item
+     */
     public void setLocation(String location) { put("location", location); }
 
+    /*
+     * gets location
+     * @param location of store that sells the item
+     */
     public String getLocation() { return getString("location"); }
 }

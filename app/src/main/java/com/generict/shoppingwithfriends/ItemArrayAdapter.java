@@ -20,11 +20,20 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
     private final Activity context;
     private final List<Item> items;
 
+    /**
+     * Views for text and image
+     */
     static class ViewHolder {
         public TextView text;
         public ImageView image;
     }
 
+    /**
+     * Array adaptor for holding items
+     * @param context activity, calls post sales report activity
+     * @param textViewResourceId links to global var
+     * @param us list of atems
+     */
     public ItemArrayAdapter(Activity context, int textViewResourceId, List<Item> us) {
         super((Context) context, textViewResourceId, us);
         this.context = context;

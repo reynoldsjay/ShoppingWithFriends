@@ -15,7 +15,6 @@ import android.widget.Button;
  * @version 1.0
  */
 public class ApplicationHomeActivity extends ActionBarActivity {
-
     private Button mLogout;
     private Button mFriends;
     private Button mWishListButton;

@@ -18,11 +18,22 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
     private final Activity context;
     private final List<ParseUser> users;
 
+
+    /**
+     * ViewHolder that gets fed into UserArrayAdapter
+     */
     static class ViewHolder {
         public TextView text;
         public ImageView image;
     }
 
+
+    /**
+     * adapter taking in users in order to make the listView dynamic
+     * @param context default
+     * @param textViewResourceId default id
+     * @param us list of users
+     */
     public UserArrayAdapter(Activity context, int textViewResourceId, List<ParseUser> us) {
         super((Context) context, textViewResourceId, us);
         this.context = context;

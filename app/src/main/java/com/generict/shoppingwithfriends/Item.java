@@ -10,22 +10,43 @@ import com.parse.ParseObject;
 @ParseClassName("Item")
 public class Item extends ParseObject {
 
+    /**
+     * Constructor for item
+     * Left empty for now
+     */
     public Item() {
     }
 
-    // getters and setters for name and price
+    /**
+     * Sets name
+     * @param name of item
+     */
     public void setName(String name) {
         put("name", name);
     }
 
+    /**
+     * Gets name
+     * @return string representation of name
+     * @throws ParseException
+     */
     public String getName() throws ParseException {
         return fetchIfNeeded().getString("name");
     }
 
+    /**
+     * Sets price
+     * @param price of item
+     */
     public void setPrice(int price) {
         put("price", price);
     }
 
+    /**
+     * Gets price
+     * @return price of item
+     * @throws ParseException
+     */
     public int getPrice() throws ParseException {
             return fetchIfNeeded().getInt("price");
     }
