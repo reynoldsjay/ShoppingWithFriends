@@ -20,6 +20,7 @@ public class ApplicationHomeActivity extends ActionBarActivity {
     private Button mWishListButton;
     private Button mSalesReport;
     private Button mViewNotifications;
+    private Button mMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,16 @@ public class ApplicationHomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        mMaps = (Button) findViewById(R.id.maps_button);
+        mMaps.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
 

@@ -50,4 +50,12 @@
         android:layout_alignRight="@+id/logout_button"
         android:layout_alignEnd="@+id/logout_button" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Map View"
+        android:id="@+id/maps_button"
+        android:layout_below="@+id/logout_button"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
