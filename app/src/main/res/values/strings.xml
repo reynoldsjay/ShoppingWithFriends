@@ -20,5 +20,6 @@
     <string name="title_activity_post_sales_report">PostSalesReportActivity</string>
     <string name="title_activity_view_notifications">ViewNotifications</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_activity2">Map2</string>
 
 </resources>
