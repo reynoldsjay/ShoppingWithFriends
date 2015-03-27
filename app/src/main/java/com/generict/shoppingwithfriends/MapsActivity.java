@@ -54,9 +54,10 @@ public class MapsActivity extends FragmentActivity {
     }
 
     /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
+     * This is where we can add markers or lines, add listeners or move the camera.
+     * Marker was added to a typical sale location, Atlantic Station.
+     * This does not pull locations from items. This is hard coded.
+     *
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
