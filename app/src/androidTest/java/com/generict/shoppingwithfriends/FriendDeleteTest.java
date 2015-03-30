@@ -1,5 +1,7 @@
 /*
+ * @Author: Jenna Kwon
  * junit testing for the application
+ * MAKE SURE TO RUN WITH THE ANDROID TEST (GREEN ROBOT)
  *
  * Version 1.0
  */
@@ -10,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class Testing {
+public class FriendDeleteTest {
 
     /**
      * @throws java.lang.Exception

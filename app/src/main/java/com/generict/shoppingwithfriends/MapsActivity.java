@@ -3,10 +3,21 @@ package com.generict.shoppingwithfriends;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import android.location.Geocoder;
+import android.location.Address;
+
+import java.util.List;
+
 
 public class MapsActivity extends FragmentActivity {
 
@@ -57,10 +68,58 @@ public class MapsActivity extends FragmentActivity {
      * This is where we can add markers or lines, add listeners or move the camera.
      * Marker was added to a typical sale location, Atlantic Station.
      * This does not pull locations from items. This is hard coded.
-     *
+     * <p/>
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(33.7925, -84.3963)).title("Sale Location: Atlantic Station"));
+        final ArrayList<ParseObject> location = new ArrayList<>(10);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("SalesReport");
+        query.whereExists("location");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                if (e == null) {
+                    for (ParseObject elem : parseObjects) {
+                        location.add(elem);
+                    }
+                }
+            }
+        });
+
+        ArrayList<LatLng> list = new ArrayList<>(10);
+
+        for (ParseObject strAddress: location) {
+            list.add(getLocationFromAddress(strAddress.getString("location")));
+            System.out.println(strAddress);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            mMap.addMarker(new MarkerOptions().position(list.get(i)).title(list.get(i).toString()));
+        }
+    }
+
+    public LatLng getLocationFromAddress(String strAddress) {
+
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new LatLng((int) (location.getLatitude() * 1E6),
+                    (int) (location.getLongitude() * 1E6));
+
+            return p1;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return p1;
     }
 }

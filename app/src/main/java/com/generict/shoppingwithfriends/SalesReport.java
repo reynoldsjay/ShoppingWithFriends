@@ -59,4 +59,9 @@ public class SalesReport extends ParseObject {
      * @param location of store that sells the item
      */
     public String getLocation() { return getString("location"); }
+
+
+
+
+
 }
