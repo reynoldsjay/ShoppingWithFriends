@@ -29,7 +29,6 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
     protected Object mActionMode;
     public int selectedItem = -1;
     protected static ItemArrayAdapter adapter;
-    private Button mAddItemsButton;
     public static final String TAG = "WishListActivity";
     public Button mBackButton;
 
@@ -37,6 +36,7 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
+        Button mAddItemsButton;
         ArrayList<Item> items = (ArrayList<Item>) ParseUser.getCurrentUser().get("WishList");
         Log.d(TAG, String.valueOf(items));
         adapter = new ItemArrayAdapter(this, android.R.layout.simple_list_item_1, items);
@@ -100,7 +100,7 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         // Inflate a menu resource providing context menu items
         MenuInflater inflater = mode.getMenuInflater();
-        // Assumes that you have "contexual.xml" menu resources
+        // Assumes that you have "contextual.xml" menu resources
         inflater.inflate(R.menu.rowselection, menu);
         return true;
     }
@@ -117,7 +117,7 @@ public class WishListActivity extends ListActivity implements ActionMode.Callbac
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuitem1_show:
+            case R.id.menu_item1_show:
                 Toast.makeText(WishListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
                 // Action picked, so close the CAB
                 mode.finish();

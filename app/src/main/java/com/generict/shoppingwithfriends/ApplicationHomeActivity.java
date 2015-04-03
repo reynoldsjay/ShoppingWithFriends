@@ -15,17 +15,17 @@ import android.widget.Button;
  * @version 1.0
  */
 public class ApplicationHomeActivity extends ActionBarActivity {
-    private Button mLogout;
-    private Button mFriends;
-    private Button mWishListButton;
-    private Button mSalesReport;
-    private Button mViewNotifications;
-    private Button mMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
+        Button mLogout;
+        Button mFriends;
+        Button mWishListButton;
+        Button mSalesReport;
+        Button mViewNotifications;
+        Button mMaps;
         setContentView(R.layout.activity_application_home);
         mWishListButton = (Button) findViewById(R.id.wish_list_button);
         mWishListButton.setOnClickListener(new View.OnClickListener() {

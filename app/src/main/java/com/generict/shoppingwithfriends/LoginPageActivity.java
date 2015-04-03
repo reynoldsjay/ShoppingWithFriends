@@ -22,8 +22,6 @@ import com.parse.ParseException;
  */
 public class LoginPageActivity extends ActionBarActivity {
 
-    private Button mBackButton;
-    private Button mGoButton;
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
 
@@ -31,6 +29,8 @@ public class LoginPageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
+        Button mBackButton;
+        Button mGoButton;
         setContentView(R.layout.activity_login_page);
         mUsernameEditText = (EditText) findViewById(R.id.username_field);
         mPasswordEditText = (EditText) findViewById(R.id.password_field);

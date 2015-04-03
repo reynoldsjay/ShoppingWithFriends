@@ -27,14 +27,12 @@ import java.util.List;
  * wishlist.
  */
 public class ViewNotificationsActivity extends ListActivity {
-
-    protected static SalesReportArrayAdapter adapter;
     public static final String TAG = "ViewNotifications";
-    public Button mBackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Button mBackButton;
         Log.d(TAG, "Running On Create");
         setContentView(R.layout.activity_view_notifications);
         final Activity activity = this;
@@ -84,7 +82,6 @@ public class ViewNotificationsActivity extends ListActivity {
     }
 
     private class NotificationsInitializationTask extends AsyncTask<Void, Void, Void> {
-        List<SalesReport> reports;
         ArrayList<SalesReport> match;
         Activity activity;
 
@@ -100,13 +97,13 @@ public class ViewNotificationsActivity extends ListActivity {
         @Override
         protected Void doInBackground(Void... params) {
             ArrayList<Item> items = (ArrayList<Item>) ParseUser.getCurrentUser().get("WishList");
-            match = new ArrayList<SalesReport>();
+            match = new ArrayList<>();
             for(final Item item : items) {
                 ParseQuery<SalesReport> query = ParseQuery.getQuery("SalesReport");
-                //I have a try catch here to handle early objects that dont have all attributes
+                //I have a try catch here to handle early objects that don't have all attributes
                 try {
                     query.whereEqualTo("name", item.getName());
-                    List<SalesReport> itemList = (List<SalesReport>) query.find();
+                    List<SalesReport> itemList = query.find();
                     for (SalesReport matchingItem : itemList) {
                         if ((matchingItem.getPrice() <= item.getPrice())) {
                             Log.d(TAG, matchingItem.getName() + matchingItem.getLocation());
@@ -124,6 +121,7 @@ public class ViewNotificationsActivity extends ListActivity {
         @Override
         protected void onPostExecute(Void _) {
             super.onPostExecute(_);
+            SalesReportArrayAdapter adapter;
             adapter = new SalesReportArrayAdapter(activity, android.R.layout.simple_list_item_1, match);
             setListAdapter(adapter);
         }

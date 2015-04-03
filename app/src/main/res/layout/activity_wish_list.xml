@@ -9,7 +9,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back_text"
         android:id="@+id/back_button"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/add_text"
         android:id="@+id/add_items_button"
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/back_button"
@@ -31,7 +31,6 @@
         android:layout_height="444dp"
         android:id="@android:id/list"
         android:background="#ffaeff00"
-        android:backgroundTint="@color/abc_search_url_text_normal"
         android:clickable="false"
         android:layout_above="@+id/add_items_button" />
 

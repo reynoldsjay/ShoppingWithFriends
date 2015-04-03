@@ -10,7 +10,7 @@ import com.parse.ParseObject;
  */
 public class ShoppingWithFriendsApplication extends Application {
     public void onCreate() {
-        // Enable Local Datastore.
+        // Enable Local data store.
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Item.class);
         ParseObject.registerSubclass(SalesReport.class);

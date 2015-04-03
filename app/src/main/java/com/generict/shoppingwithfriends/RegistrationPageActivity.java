@@ -24,9 +24,6 @@ import java.util.ArrayList;
  */
 public class RegistrationPageActivity extends ActionBarActivity {
 
-
-    private Button mCancelButton;
-    private Button mRegisterButton;
     private EditText mName;
     private EditText mEmail;
     private EditText mUsername;
@@ -37,6 +34,8 @@ public class RegistrationPageActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
+        Button mCancelButton;
+        Button mRegisterButton;
         setContentView(R.layout.activity_registration_page);
         mName = (EditText) findViewById(R.id.name);
         mEmail = (EditText) findViewById(R.id.email);

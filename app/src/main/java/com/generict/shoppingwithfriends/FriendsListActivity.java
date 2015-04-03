@@ -26,18 +26,17 @@ import java.util.List;
 public class FriendsListActivity extends ListActivity implements ActionMode.Callback {
 
 
-    protected Object mActionMode;
-    public int selectedItem = -1;
-    protected static UserArrayAdapter adapter;
-    private Button mAddFriends;
-    public static final String TAG = "FriendListActivity";
-    public Button mBackButton;
+    private Object mActionMode;
+    private int selectedItem = -1;
+    private static UserArrayAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends_list);
+        Button mBackButton;
+        Button mAddFriends;
         //Create new adaptor and set it
         ArrayList<ParseUser> listOfFriends = (ArrayList<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         adapter = new UserArrayAdapter(this, android.R.layout.simple_list_item_1, listOfFriends);
@@ -102,7 +101,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
      *
      * @param user clicked user
      */
-    public static void deleteFriend(ParseUser user) {
+    private static void deleteFriend(ParseUser user) {
         List<ParseUser> listOfFriends = (List<ParseUser>) ParseUser.getCurrentUser().get("Friends");
         listOfFriends.remove(user);
         ParseUser.getCurrentUser().put("Friends", listOfFriends);
@@ -150,7 +149,7 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuitem1_show:
+            case R.id.menu_item1_show:
                 Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
                 // Action picked, so close the CAB
                 mode.finish();

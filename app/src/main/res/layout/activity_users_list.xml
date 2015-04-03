@@ -10,13 +10,12 @@
         android:layout_height="444dp"
         android:background="#ffaeff00"
         style="@style/Base.V14.Theme.AppCompat.Light"
-        android:backgroundTint="@color/abc_search_url_text_normal"
         android:clickable="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back_text"
         android:id="@+id/back_button"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

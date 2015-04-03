@@ -18,9 +18,6 @@ import java.util.List;
  * Activity for adding things to a wish list
  */
 public class AddToWishListActivity extends ActionBarActivity {
-
-    private Button mAddButton;
-    private Button mCancelButton;
     private EditText mItemName;
     private EditText mPrice;
 
@@ -28,6 +25,8 @@ public class AddToWishListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
+        Button mAddButton;
+        Button mCancelButton;
         setContentView(R.layout.activity_add_to_wish_list);
         mItemName = (EditText) findViewById(R.id.item_name_field);
         mPrice = (EditText) findViewById(R.id.price_field);

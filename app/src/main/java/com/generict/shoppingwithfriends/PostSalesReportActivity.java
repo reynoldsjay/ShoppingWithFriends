@@ -14,8 +14,6 @@ import android.widget.EditText;
  * Class to help you post sales reports
  */
 public class PostSalesReportActivity extends ActionBarActivity {
-    private Button mAddButton;
-    private Button mCancelButton;
     private EditText mItemName;
     private EditText mPrice;
     private EditText mItemLocation;
@@ -24,6 +22,8 @@ public class PostSalesReportActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Activity activity = this;
+        Button mAddButton;
+        Button mCancelButton;
         setContentView(R.layout.activity_post_sales_report);
         mItemName = (EditText) findViewById(R.id.item_name_field);
         mPrice = (EditText) findViewById(R.id.price_field);

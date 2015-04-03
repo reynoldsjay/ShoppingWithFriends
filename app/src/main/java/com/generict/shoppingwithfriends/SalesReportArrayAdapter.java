@@ -1,7 +1,7 @@
 package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +17,7 @@ import java.util.List;
  * Adapts Sales Report objects for list view
  */
 public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
+    private static final String TAG = "SalesReportArrayAdapter";
     private final Activity context;
     private final List<SalesReport> items;
 
@@ -35,7 +36,7 @@ public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
      * @param us list of sales reports
      */
     public SalesReportArrayAdapter(Activity context, int textViewResourceId, List<SalesReport> us) {
-        super((Context) context, textViewResourceId, us);
+        super(context, textViewResourceId, us);
         this.context = context;
         this.items = us;
     }
@@ -60,7 +61,9 @@ public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
         // fetches data from cloud if needed
         try {
             u.fetchIfNeeded();
-        } catch (ParseException e) {}
+        } catch (ParseException e) {
+            Log.e(TAG, "Error getting sales report : " + e.getMessage());
+        }
         String s = u.getName();
         holder.text.setText(s);
         holder.image.setImageResource(R.drawable.yes);

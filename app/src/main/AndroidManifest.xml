@@ -41,11 +41,7 @@
         </activity>
         <activity
             android:name=".RegistrationPageActivity"
-            android:label="@string/title_activity_registration_page"
-            android:parentActivityName=".LoginRegistrationActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.generict.shoppingwithfriends.LoginRegistrationActivity" />
+            android:label="@string/title_activity_registration_page">
         </activity>
         <activity
             android:name=".WishListActivity"

@@ -1,7 +1,7 @@
 package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
+    public static final String TAG = "UserArrayAdapter";
     private final Activity context;
     private final List<ParseUser> users;
 
@@ -35,7 +36,7 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
      * @param us list of users
      */
     public UserArrayAdapter(Activity context, int textViewResourceId, List<ParseUser> us) {
-        super((Context) context, textViewResourceId, us);
+        super(context, textViewResourceId, us);
         this.context = context;
         this.users = us;
     }
@@ -60,7 +61,9 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
         // fetches updates from cloud if needed
         try {
             u.fetchIfNeeded();
-        } catch (ParseException e) {}
+        } catch (ParseException e) {
+            Log.e(TAG, "Error getting parse user: " + e.getMessage());
+        }
         String s = u.get("Name").toString();
         holder.text.setText(s);
         holder.image.setImageResource(R.drawable.yes);

@@ -2,6 +2,7 @@ package com.generict.shoppingwithfriends;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
  * Adapts Item objects for list view
  */
 public class ItemArrayAdapter extends ArrayAdapter<Item> {
+    private static final String TAG = "ItemArrayAdapter";
     private final Activity context;
     private final List<Item> items;
 
@@ -32,9 +34,10 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
      * Array adaptor for holding items
      * @param context activity, calls post sales report activity
      * @param textViewResourceId links to global var
-     * @param us list of atems
+     * @param us list of items
      */
     public ItemArrayAdapter(Activity context, int textViewResourceId, List<Item> us) {
+        //noinspection RedundantCast
         super((Context) context, textViewResourceId, us);
         this.context = context;
         this.items = us;
@@ -63,7 +66,9 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
             String s = u.getName();
             holder.text.setText(s);
             holder.image.setImageResource(R.drawable.yes);
-        } catch (ParseException e) {}
+        } catch (ParseException e) {
+            Log.e(TAG, "Exception in get item query: " + e);
+        }
         return rowView;
     }
 }

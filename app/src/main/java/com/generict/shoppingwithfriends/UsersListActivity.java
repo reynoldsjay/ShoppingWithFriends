@@ -24,18 +24,16 @@ import java.util.List;
 
 /**
  * Created by Jenna Kwon
- * TO MAKE THE LIST COMPATIBLE ACROSS ALL DEVICES, LOOK AT MASTERDETAILDEMO!
+ * TO MAKE THE LIST COMPATIBLE ACROSS ALL DEVICES, LOOK AT MASTER DETAIL DEMO!
  */
 
 
 public class UsersListActivity extends ListActivity implements ActionMode.Callback {
 
-    protected Object mActionMode;
-    public int selectedItem = -1;
-    protected List<ParseUser> listOfUsers;
-    protected UserArrayAdapter adapter;
-    public final String TAG = "UsersListActivity";
-    public Button mBackButton;
+    private Object mActionMode;
+    private int selectedItem = -1;
+    private List<ParseUser> listOfUsers;
+    private UserArrayAdapter adapter;
 
     //Helpful guide:
     //https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView//
@@ -43,7 +41,8 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listOfUsers = new ArrayList<ParseUser>();
+        Button mBackButton;
+        listOfUsers = new ArrayList<>();
         //set layout
         setContentView(R.layout.activity_users_list);
         //Create new adapter and set it
@@ -106,7 +105,7 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
         // Inflate a menu resource providing context menu items
         MenuInflater inflater = mode.getMenuInflater();
-        // Assumes that you have "contexual.xml" menu resources
+        // Assumes that you have "contextual.xml" menu resources
         inflater.inflate(R.menu.rowselection, menu);
         return true;
     }
@@ -123,7 +122,7 @@ public class UsersListActivity extends ListActivity implements ActionMode.Callba
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menuitem1_show:
+            case R.id.menu_item1_show:
                 Toast.makeText(UsersListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
                 // Action picked, so close the CAB
                 mode.finish();

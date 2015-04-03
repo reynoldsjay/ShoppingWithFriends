@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * App start page with login or register
@@ -18,14 +17,13 @@ import android.widget.Toast;
  */
 public class LoginRegistrationActivity extends ActionBarActivity {
 
-    private Button mLoginButton;
-    private Button mRegistrationButton;
-    private TextView mWelcomeTextView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_registration);
+        Button mLoginButton;
+        Button mRegistrationButton;
+        TextView mWelcomeTextView;
         mLoginButton = (Button) findViewById(R.id.login_button);
         mRegistrationButton = (Button) findViewById(R.id.registration_button);
         mWelcomeTextView = (TextView) findViewById(R.id.welcome);

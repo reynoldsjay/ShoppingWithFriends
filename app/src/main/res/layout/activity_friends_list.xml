@@ -9,23 +9,22 @@
         android:layout_height="444dp"
         android:id="@android:id/list"
         android:background="#ffaeff00"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:minHeight="20dp"
         style="@style/Base.V14.Theme.AppCompat.Light"
-        android:backgroundTint="@color/abc_search_url_text_normal"
         android:clickable="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search &amp; Add Friends!"
+        android:text="@string/search_and_add_text"
         android:id="@+id/add_friend_button"
         android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back_text"
         android:id="@+id/back_button"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>
