@@ -12,6 +12,7 @@ package com.generict.shoppingwithfriends;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.app.Instrumentation.ActivityMonitor;
+import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.test.*;
 import android.test.ActivityInstrumentationTestCase2;
@@ -42,6 +43,7 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
 
     /**
      * Simple test that is meant to succeed
+     *
      * @throws Exception
      */
     public void testSimple() throws Exception {
@@ -49,32 +51,36 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
         final int reality = 5;
         Assert.assertEquals("Do not equal", expected, reality);
     }
+
+    /**
+     * Test for ensuring that upon clicking "SEARCH & ADD FRIENDS" button,
+     * List of registered users show up
+     */
+    @MediumTest
+    public void testClickAddFriend() {
+        // Button that will lead to UsersListActivity
+        final Button addFriendButton = (Button) activityUnderTest.findViewById(R.id.add_friend_button);
+
+        // Set up an activity monitor
+        ActivityMonitor activityMonitor = getInstrumentation().addMonitor(UsersListActivity.class.getName(), null, false);
+
+        // Open current activity
+        FriendsListActivity myActivity = getActivity();
+
+        // Click on addFriendButton
+        myActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                addFriendButton.performClick();
+            }
+        });
+
+        // Test for 5 seconds
+        UsersListActivity user_activity = (UsersListActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+
+        // Check that next activity is opened and captured
+        assertNotNull(user_activity);
+        user_activity.finish();
+
+    }
 }
-//
-//
-//    // Testing this activity's interaction with other activities
-//    @Test
-//    public void testOpenNextActivity() {
-//        // register next activity that need to be monitored.
-//        // Upon clicking
-//        ActivityMonitor activityMonitor = getInstrumentation().addMonitor(UsersListActivity.class.getName(), null, false);
-//
-//        // open current activity.
-//        FriendsListActivity myActivity = getActivity();
-//        final Button button = (Button) myActivity.findViewById(com.generict.shoppingwithfriends.R.id.add_friend_button);
-//        myActivity.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                // click button and open next activity.
-//                button.performClick();
-//            }
-//        });
-//
-//        // 5000 miliseconds = 5 seconds
-//        UsersListActivity user_activity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
-//
-//        // next activity is opened and captured.
-//        assertNotNull(user_activity);
-//        user_activity.finish();
-//    }
-//}
