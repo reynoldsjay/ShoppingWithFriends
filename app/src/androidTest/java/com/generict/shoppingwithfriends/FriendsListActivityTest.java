@@ -1,28 +1,38 @@
 /*
  * @Author: Jenna Kwon
- * junit testing for the application
- * MAKE SURE TO RUN WITH THE ANDROID TEST (GREEN ROBOT)
+ * junit testing for FriendsListActivity
  *
  */
 
-//http://stackoverflow.com/questions/13042015/testing-onactivityresult
-
 package com.generict.shoppingwithfriends;
 
-import android.app.Activity;
-import android.app.Instrumentation;
+
 import android.app.Instrumentation.ActivityMonitor;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.test.suitebuilder.annotation.MediumTest;
+import android.view.ActionProvider;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.widget.Button;
 import android.test.*;
-import android.test.ActivityInstrumentationTestCase2;
-import android.test.AndroidTestCase;
-import android.test.InstrumentationTestCase;
+import android.view.View;
 import junit.framework.Assert;
+import android.view.ActionMode;
 
 
 public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<FriendsListActivity> {
-    FriendsListActivity activityUnderTest;
+    private FriendsListActivity activityUnderTest;
+    public View listView;
+    private Button addFriendButton;
+    private Button backButton;
+    private View decorView;
+    public View menuItemView;
+    public Object curActionMode;
+
 
     /**
      * No param constructor that passes the activity
@@ -38,7 +48,15 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
      */
     @Override
     public void setUp() throws Exception {
+        super.setUp();
+        setActivityInitialTouchMode(true);
         activityUnderTest = getActivity();
+        listView = (View) activityUnderTest.findViewById(R.id.menuitem1_show);
+        addFriendButton = (Button) activityUnderTest.findViewById(R.id.add_friend_button);
+        backButton = (Button) activityUnderTest.findViewById(R.id.back_button);
+        decorView = activityUnderTest.getWindow().getDecorView();
+        menuItemView = activityUnderTest.findViewById(R.id.menuitem1_show);
+        curActionMode = activityUnderTest.mActionMode;
     }
 
     /**
@@ -58,9 +76,6 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
      */
     @MediumTest
     public void testClickAddFriend() {
-        // Button that will lead to UsersListActivity
-        final Button addFriendButton = (Button) activityUnderTest.findViewById(R.id.add_friend_button);
-
         // Set up an activity monitor
         ActivityMonitor activityMonitor = getInstrumentation().addMonitor(UsersListActivity.class.getName(), null, false);
 
@@ -89,17 +104,11 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
      */
     @MediumTest
     public void testClickBack() {
-        // Button that will lead to UsersListActivity
-        final Button backButton = (Button) activityUnderTest.findViewById(R.id.back_button);
-
         // Set up an activity monitor
         ActivityMonitor activityMonitor = getInstrumentation().addMonitor(ApplicationHomeActivity.class.getName(), null, false);
 
-        // Open current activity
-        FriendsListActivity myActivity = getActivity();
-
         // Click on addFriendButton
-        myActivity.runOnUiThread(new Runnable() {
+        activityUnderTest.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 backButton.performClick();
@@ -115,4 +124,543 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
     }
 
 
+    /**
+     * Checks that buttons show up on the screen
+     */
+    public void testListViewShow() {
+        ViewAsserts.assertOnScreen(decorView, addFriendButton);
+        ViewAsserts.assertOnScreen(decorView, backButton);
+        assertTrue(View.VISIBLE == addFriendButton.getVisibility());
+        assertTrue(View.VISIBLE == backButton.getVisibility());
+    }
+
+    /**
+     * Tests onActionItemClicked method
+     * Creates an arbitrary menu item that doesn't exist have its view as the current ActionMode object
+     * Must return false
+     * <p/>
+     * public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+     * switch (item.getItemId()) {
+     * case R.id.menuitem1_show:
+     * Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
+     * // Action picked, so close the CAB
+     * mode.finish();
+     * return true;
+     * default:
+     * return false;
+     * }
+     * }
+     */
+    public void testOnActionItemClickedFalse() {
+        //Tests that onActionItemClicked will return false
+        ActionMode badActionMode = null;
+        MenuItem badItem = new MenuItem() {
+            @Override
+            public int getItemId() {
+                return 0;
+            }
+
+            @Override
+            public int getGroupId() {
+                return 0;
+            }
+
+            @Override
+            public int getOrder() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setTitle(CharSequence title) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setTitle(int title) {
+                return null;
+            }
+
+            @Override
+            public CharSequence getTitle() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setTitleCondensed(CharSequence title) {
+                return null;
+            }
+
+            @Override
+            public CharSequence getTitleCondensed() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIcon(Drawable icon) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIcon(int iconRes) {
+                return null;
+            }
+
+            @Override
+            public Drawable getIcon() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIntent(Intent intent) {
+                return null;
+            }
+
+            @Override
+            public Intent getIntent() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setShortcut(char numericChar, char alphaChar) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setNumericShortcut(char numericChar) {
+                return null;
+            }
+
+            @Override
+            public char getNumericShortcut() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setAlphabeticShortcut(char alphaChar) {
+                return null;
+            }
+
+            @Override
+            public char getAlphabeticShortcut() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setCheckable(boolean checkable) {
+                return null;
+            }
+
+            @Override
+            public boolean isCheckable() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setChecked(boolean checked) {
+                return null;
+            }
+
+            @Override
+            public boolean isChecked() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setVisible(boolean visible) {
+                return null;
+            }
+
+            @Override
+            public boolean isVisible() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setEnabled(boolean enabled) {
+                return null;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return false;
+            }
+
+            @Override
+            public boolean hasSubMenu() {
+                return false;
+            }
+
+            @Override
+            public SubMenu getSubMenu() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setOnMenuItemClickListener(OnMenuItemClickListener menuItemClickListener) {
+                return null;
+            }
+
+            @Override
+            public ContextMenu.ContextMenuInfo getMenuInfo() {
+                return null;
+            }
+
+            @Override
+            public void setShowAsAction(int actionEnum) {
+
+            }
+
+            @Override
+            public MenuItem setShowAsActionFlags(int actionEnum) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionView(View view) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionView(int resId) {
+                return null;
+            }
+
+            @Override
+            public View getActionView() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionProvider(ActionProvider actionProvider) {
+                return null;
+            }
+
+            @Override
+            public ActionProvider getActionProvider() {
+                return null;
+            }
+
+            @Override
+            public boolean expandActionView() {
+                return false;
+            }
+
+            @Override
+            public boolean collapseActionView() {
+                return false;
+            }
+
+            @Override
+            public boolean isActionViewExpanded() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setOnActionExpandListener(OnActionExpandListener listener) {
+                return null;
+            }
+        };
+
+        assertEquals(false, activityUnderTest.onActionItemClicked(badActionMode, badItem));
+
+
+    }
+
+    /**
+     * Tests onActionItemClicked method
+     * Creates an a valid menu item have its view as the current ActionMode object
+     * Must return true
+     * <p/>
+     * public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+     * switch (item.getItemId()) {
+     * case R.id.menuitem1_show:
+     * Toast.makeText(FriendsListActivity.this, String.valueOf(selectedItem), Toast.LENGTH_LONG).show();
+     * // Action picked, so close the CAB
+     * mode.finish();
+     * return true;
+     * default:
+     * return false;
+     * }
+     * }
+     */
+    public void testOnActionItemClickedTrue() {
+
+        final ActionMode goodActionMode = new ActionMode() {
+            CharSequence title;
+            int intTitle;
+            CharSequence subTitle;
+            int intSubTitle;
+            View view = activityUnderTest.findViewById(R.id.menuitem1_show);
+
+            @Override
+            public void setTitle(CharSequence title) {
+                this.title = title;
+            }
+
+            @Override
+            public void setTitle(int resId) {
+                this.intTitle = resId;
+            }
+
+            @Override
+            public void setSubtitle(CharSequence subtitle) {
+                this.subTitle = subtitle;
+            }
+
+            @Override
+            public void setSubtitle(int resId) {
+                this.intSubTitle = resId;
+            }
+
+            @Override
+            public void setCustomView(View view) {
+                this.view = activityUnderTest.findViewById(R.id.menuitem1_show);
+            }
+
+            @Override
+            public void invalidate() {
+            }
+
+            @Override
+            public void finish() {
+            }
+
+            @Override
+            public Menu getMenu() {
+                return null;
+            }
+
+            @Override
+            public CharSequence getTitle() {
+                return null;
+            }
+
+            @Override
+            public CharSequence getSubtitle() {
+                return null;
+            }
+
+            @Override
+            public View getCustomView() {
+                return activityUnderTest.findViewById(R.id.menuitem1_show);
+            }
+
+            @Override
+            public MenuInflater getMenuInflater() {
+                return activityUnderTest.getMenuInflater();
+            }
+        };
+
+        MenuItem goodItem = new MenuItem() {
+
+            Intent intent = new Intent(activityUnderTest, FriendsListActivity.class);
+
+            @Override
+            public int getItemId() {
+                return R.id.menuitem1_show;
+            }
+
+            @Override
+            public int getGroupId() {
+                return 30;
+            }
+
+            @Override
+            public int getOrder() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setTitle(CharSequence title) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setTitle(int title) {
+                return null;
+            }
+
+            @Override
+            public CharSequence getTitle() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setTitleCondensed(CharSequence title) {
+                return null;
+            }
+
+            @Override
+            public CharSequence getTitleCondensed() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIcon(Drawable icon) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIcon(int iconRes) {
+                return null;
+            }
+
+            @Override
+            public Drawable getIcon() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setIntent(Intent intent) {
+                return null;
+            }
+
+            @Override
+            public Intent getIntent() {
+                return intent;
+            }
+
+            @Override
+            public MenuItem setShortcut(char numericChar, char alphaChar) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setNumericShortcut(char numericChar) {
+                return null;
+            }
+
+            @Override
+            public char getNumericShortcut() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setAlphabeticShortcut(char alphaChar) {
+                return null;
+            }
+
+            @Override
+            public char getAlphabeticShortcut() {
+                return 0;
+            }
+
+            @Override
+            public MenuItem setCheckable(boolean checkable) {
+                return null;
+            }
+
+            @Override
+            public boolean isCheckable() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setChecked(boolean checked) {
+                return null;
+            }
+
+            @Override
+            public boolean isChecked() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setVisible(boolean visible) {
+                return null;
+            }
+
+            @Override
+            public boolean isVisible() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setEnabled(boolean enabled) {
+                return null;
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return false;
+            }
+
+            @Override
+            public boolean hasSubMenu() {
+                return false;
+            }
+
+            @Override
+            public SubMenu getSubMenu() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setOnMenuItemClickListener(OnMenuItemClickListener menuItemClickListener) {
+                return null;
+            }
+
+            @Override
+            public ContextMenu.ContextMenuInfo getMenuInfo() {
+                return null;
+            }
+
+            @Override
+            public void setShowAsAction(int actionEnum) {
+
+            }
+
+            @Override
+            public MenuItem setShowAsActionFlags(int actionEnum) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionView(View view) {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionView(int resId) {
+                return null;
+            }
+
+            @Override
+            public View getActionView() {
+                return null;
+            }
+
+            @Override
+            public MenuItem setActionProvider(ActionProvider actionProvider) {
+                return null;
+            }
+
+            @Override
+            public ActionProvider getActionProvider() {
+                return null;
+            }
+
+            @Override
+            public boolean expandActionView() {
+                return false;
+            }
+
+            @Override
+            public boolean collapseActionView() {
+                return false;
+            }
+
+            @Override
+            public boolean isActionViewExpanded() {
+                return false;
+            }
+
+            @Override
+            public MenuItem setOnActionExpandListener(OnActionExpandListener listener) {
+                return null;
+            }
+        };
+
+        assertEquals(true, activityUnderTest.onActionItemClicked(goodActionMode, goodItem));
+    }
 }

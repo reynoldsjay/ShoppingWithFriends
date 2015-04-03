@@ -26,7 +26,7 @@ import java.util.List;
 public class FriendsListActivity extends ListActivity implements ActionMode.Callback {
 
 
-    protected Object mActionMode;
+    public Object mActionMode;
     public int selectedItem = -1;
     protected static UserArrayAdapter adapter;
     private Button mAddFriends;
@@ -81,7 +81,6 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
                 startActivity(intent);
             }
         });
-
     }
 
     /**
