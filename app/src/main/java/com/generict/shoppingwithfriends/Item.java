@@ -8,7 +8,7 @@ import com.parse.ParseObject;
  * Class for holding products to be added to wish lists
  */
 @ParseClassName("Item")
-public class Item extends ParseObject {
+class Item extends ParseObject {
 
     /**
      * Constructor for item

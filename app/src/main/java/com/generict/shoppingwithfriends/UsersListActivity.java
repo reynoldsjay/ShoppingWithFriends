@@ -28,6 +28,7 @@ import java.util.List;
  */
 
 
+@SuppressWarnings("ALL")
 public class UsersListActivity extends ListActivity implements ActionMode.Callback {
 
     private Object mActionMode;

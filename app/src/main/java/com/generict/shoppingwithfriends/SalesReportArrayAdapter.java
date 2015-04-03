@@ -1,5 +1,6 @@
 package com.generict.shoppingwithfriends;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,7 @@ import java.util.List;
 /**
  * Adapts Sales Report objects for list view
  */
-public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
+class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
     private static final String TAG = "SalesReportArrayAdapter";
     private final Activity context;
     private final List<SalesReport> items;
@@ -35,12 +36,14 @@ public class SalesReportArrayAdapter extends ArrayAdapter<SalesReport> {
      * @param textViewResourceId default id
      * @param us list of sales reports
      */
+    @SuppressWarnings("SameParameterValue")
     public SalesReportArrayAdapter(Activity context, int textViewResourceId, List<SalesReport> us) {
         super(context, textViewResourceId, us);
         this.context = context;
         this.items = us;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;

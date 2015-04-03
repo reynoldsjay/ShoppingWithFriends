@@ -1,5 +1,6 @@
 package com.generict.shoppingwithfriends;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
      * @param textViewResourceId links to global var
      * @param us list of items
      */
+    @SuppressWarnings("SameParameterValue")
     public ItemArrayAdapter(Activity context, int textViewResourceId, List<Item> us) {
         //noinspection RedundantCast
         super((Context) context, textViewResourceId, us);
@@ -43,6 +45,7 @@ public class ItemArrayAdapter extends ArrayAdapter<Item> {
         this.items = us;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;

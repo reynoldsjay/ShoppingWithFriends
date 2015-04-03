@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Activity for adding things to a wish list
  */
+@SuppressWarnings("ALL")
 public class AddToWishListActivity extends ActionBarActivity {
     private EditText mItemName;
     private EditText mPrice;

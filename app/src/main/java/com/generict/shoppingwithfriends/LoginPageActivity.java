@@ -27,6 +27,7 @@ public class LoginPageActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("Login Activity called");
         super.onCreate(savedInstanceState);
         final Activity activity = this;
         Button mBackButton;

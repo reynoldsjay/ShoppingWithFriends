@@ -26,6 +26,7 @@ import java.util.List;
  * that is if a sales report matches an item in his or her
  * wishlist.
  */
+@SuppressWarnings("ALL")
 public class ViewNotificationsActivity extends ListActivity {
     public static final String TAG = "ViewNotifications";
 

@@ -1,5 +1,6 @@
 package com.generict.shoppingwithfriends;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
+    @SuppressWarnings("WeakerAccess")
     public static final String TAG = "UserArrayAdapter";
     private final Activity context;
     private final List<ParseUser> users;
@@ -35,12 +37,14 @@ public class UserArrayAdapter extends ArrayAdapter<ParseUser> {
      * @param textViewResourceId default id
      * @param us list of users
      */
+    @SuppressWarnings("SameParameterValue")
     public UserArrayAdapter(Activity context, int textViewResourceId, List<ParseUser> us) {
         super(context, textViewResourceId, us);
         this.context = context;
         this.users = us;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;

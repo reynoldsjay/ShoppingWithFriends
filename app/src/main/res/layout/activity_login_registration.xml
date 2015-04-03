@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android ="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -18,12 +19,14 @@
             android:id="@+id/login_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/login_button"/>
+            android:text="@string/login_button"
+            tools:ignore="ButtonStyle" />
         <Button
             android:id="@+id/registration_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/registration_button"/>
+            android:text="@string/registration_button"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 

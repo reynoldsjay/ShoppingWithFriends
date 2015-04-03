@@ -26,7 +26,7 @@
         android:layout_width="232dp"
         android:layout_height="wrap_content"
         android:id="@+id/username"
-        android:autoText="false"
+        android:inputType="textAutoCorrect"
         android:hint="@string/username_text" />
 
     <EditText
@@ -36,8 +36,7 @@
         android:ems="10"
         android:id="@+id/password"
         android:layout_gravity="center_horizontal"
-        android:hint="@string/password_hint"
-        android:password="true" />
+        android:hint="@string/password_hint" />
 
     <Button
         android:id="@+id/done_button"

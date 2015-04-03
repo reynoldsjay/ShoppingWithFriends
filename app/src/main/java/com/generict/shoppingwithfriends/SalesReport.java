@@ -7,7 +7,7 @@ import com.parse.ParseObject;
  * Class for holding products to be added to posts
  */
 @ParseClassName("SalesReport")
-public class SalesReport extends ParseObject {
+class SalesReport extends ParseObject {
 
     /**
      * Constructor for sales report
@@ -59,4 +59,9 @@ public class SalesReport extends ParseObject {
      * @param location of store that sells the item
      */
     public String getLocation() { return getString("location"); }
+
+
+
+
+
 }

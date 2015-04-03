@@ -24,6 +24,7 @@ import java.util.ArrayList;
 /**
  * Shows the current user's wish list
  */
+@SuppressWarnings("ALL")
 public class WishListActivity extends ListActivity implements ActionMode.Callback {
 
     protected Object mActionMode;

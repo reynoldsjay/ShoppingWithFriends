@@ -23,13 +23,15 @@ import java.util.List;
 /**
  * Shows the current users friends.
 */
+@SuppressWarnings("ALL")
 public class FriendsListActivity extends ListActivity implements ActionMode.Callback {
 
 
-    private Object mActionMode;
-    private int selectedItem = -1;
-    private static UserArrayAdapter adapter;
 
+
+    public Object mActionMode;
+    public int selectedItem = -1;
+    protected static UserArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,6 @@ public class FriendsListActivity extends ListActivity implements ActionMode.Call
                 startActivity(intent);
             }
         });
-
     }
 
     /**
