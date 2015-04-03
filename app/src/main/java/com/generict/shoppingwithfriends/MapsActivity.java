@@ -15,6 +15,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import android.location.Geocoder;
 import android.location.Address;
+import android.util.Log;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class MapsActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("MapsActivity:", "Maps activity called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
@@ -59,8 +61,11 @@ public class MapsActivity extends FragmentActivity {
                     .getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
+                Log.d("MapsActivity:", "mMap is not Null");
                 setUpMap();
             }
+        }else{
+            Log.d("MapsActivity:", "mMap is Null");
         }
     }
 
@@ -72,15 +77,19 @@ public class MapsActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        final ArrayList<ParseObject> location = new ArrayList<>(10);
+
+        final ArrayList<ParseObject> salesReports = new ArrayList<>(10);
+
+        Log.d("MapsActivity:", "setUpMap in action");
+        //query is empty
         ParseQuery<ParseObject> query = ParseQuery.getQuery("SalesReport");
-        query.whereExists("location");
+
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
                 if (e == null) {
                     for (ParseObject elem : parseObjects) {
-                        location.add(elem);
+                        salesReports.add(elem);
                     }
                 }
             }
@@ -88,11 +97,15 @@ public class MapsActivity extends FragmentActivity {
 
         ArrayList<LatLng> list = new ArrayList<>(10);
 
-        for (ParseObject strAddress: location) {
-            list.add(getLocationFromAddress(strAddress.getString("location")));
-            System.out.println(strAddress);
-        }
+        //can't get the sales reports
+        for (ParseObject saleReport: salesReports) {
+            Log.d("MapsActivity: ", "sale: " + saleReport.getString("name"));
+            list.add(getLocationFromAddress(saleReport.getString("location")));
 
+        }
+        Log.d("MapsActivity:", "list size: " + list.size());
+
+        //list is a list of lat/lng
         for (int i = 0; i < list.size(); i++) {
             mMap.addMarker(new MarkerOptions().position(list.get(i)).title(list.get(i).toString()));
         }
@@ -110,9 +123,6 @@ public class MapsActivity extends FragmentActivity {
                 return null;
             }
             Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
-
             p1 = new LatLng((int) (location.getLatitude() * 1E6),
                     (int) (location.getLongitude() * 1E6));
 
@@ -123,3 +133,38 @@ public class MapsActivity extends FragmentActivity {
         return p1;
     }
 }
+
+//
+//    public void ParseQueryMap() {
+//        ParseQuery query = new ParseQuery("MyObject");
+//        query.findInBackground(new FindCallback() {
+//            public void done(List<ParseObject> myObject, ParseException e) {
+//                if (e == null) {
+//
+//                    for ( int i = 0; i < myObject.size(); i++) {
+//
+//                        commGet =  myObject.get(i).getString("Comment");
+//
+//                        geo1Dub = myObject.get(i).getParseGeoPoint("location").getLatitude();
+//                        geo2Dub = myObject.get(i).getParseGeoPoint("location").getLongitude();
+//
+//                        Location aLocation = new Location("first");
+//                        aLocation.setLatitude(geo1Dub);
+//                        aLocation.setLongitude(geo2Dub);
+//                        Location bLocation = new Location("second");
+//                        bLocation.setLatitude(location.getLatitude());
+//                        bLocation.setLongitude(location.getLongitude());
+//                        int distance = (int)aLocation.distanceTo(bLocation);
+//                        if (distance<rad) {  // where "rad" radius display points
+//                            myMap.addMarker(new MarkerOptions().position(new LatLng(geo1Dub,geo2Dub)).title(commGet)                                   .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+//
+//                        } else {
+//                        }
+//
+//                    }
+//
+//                } else {
+//                    Toast.makeText(MainActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
