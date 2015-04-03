@@ -54,7 +54,7 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
 
     /**
      * Test for ensuring that upon clicking "SEARCH & ADD FRIENDS" button,
-     * List of registered users show up
+     * List of registered users show up by redirecting to UsersListActivity
      */
     @MediumTest
     public void testClickAddFriend() {
@@ -81,6 +81,38 @@ public class FriendsListActivityTest extends ActivityInstrumentationTestCase2<Fr
         // Check that next activity is opened and captured
         assertNotNull(user_activity);
         user_activity.finish();
-
     }
+
+    /**
+     * Test for ensuring that upon clicking "Back" button,
+     * User is redirected to the home page
+     */
+    @MediumTest
+    public void testClickBack() {
+        // Button that will lead to UsersListActivity
+        final Button backButton = (Button) activityUnderTest.findViewById(R.id.back_button);
+
+        // Set up an activity monitor
+        ActivityMonitor activityMonitor = getInstrumentation().addMonitor(ApplicationHomeActivity.class.getName(), null, false);
+
+        // Open current activity
+        FriendsListActivity myActivity = getActivity();
+
+        // Click on addFriendButton
+        myActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                backButton.performClick();
+            }
+        });
+
+        // Test for 5 seconds
+        ApplicationHomeActivity home_activity = (ApplicationHomeActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+
+        // Check that next activity is opened and captured
+        assertNotNull(home_activity);
+        home_activity.finish();
+    }
+
+
 }
