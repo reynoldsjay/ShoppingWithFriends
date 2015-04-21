@@ -3,12 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#ffffffff">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_text"/>
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:text="@string/login_text"
+        android:background="#ffbebfff"
+        android:textSize="20dp"
+        android:textColor="#ffffffff"
+        android:textAlignment="center"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -23,15 +30,25 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/username_text"/>
+                android:layout_width="150dp"
+                android:layout_height="26dp"
+                android:text="@string/username_text"
+                android:textSize="15dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#ff89c1ff"
+                android:layout_marginTop="2dp"
+                android:textColor="#ffffffff"
+                android:fontFamily="sans-serif-light" />
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="106dp"
+                android:layout_height="30dp"
                 android:inputType="text"
                 android:hint="@string/username_hint"
-                android:id="@+id/username_field"/>
+                android:id="@+id/username_field"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="2dp"
+                android:gravity="end|fill" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,16 +58,25 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password_text"/>
+                android:layout_width="150dp"
+                android:layout_height="26dp"
+                android:text="@string/password_text"
+                android:textSize="15dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:background="#ff89c1ff"
+                android:layout_marginTop="2dp"
+                android:textColor="#FFFFFFFF"
+                android:fontFamily="sans-serif-light" />
 
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="106dp"
+                android:layout_height="30dp"
                 android:hint="@string/password_hint"
                 android:id="@+id/password_field"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:textSize="12dp"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="2dp" />
 
         </LinearLayout>
 
@@ -60,19 +86,29 @@
             android:gravity="center"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="26dp"
                 android:id="@+id/go_button"
                 android:text="@string/go_text"
-                tools:ignore="ButtonStyle" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/back_button"
-                android:text="@string/back_text"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle"
+                android:layout_marginTop="2dp"
+                android:background="#ffffbf93"
+                android:fontFamily="sans-serif-light"
+                android:textColor="#ffffffff" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="26dp"
+        android:id="@+id/back_button"
+        android:text="@string/back_text"
+        tools:ignore="ButtonStyle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"
+        android:background="#ffffbf93"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#ffffffff" />
 
 </LinearLayout>
