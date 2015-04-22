@@ -16,13 +16,17 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/max_price_text"
         android:id="@+id/textView"
         android:layout_above="@+id/price_field"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#ffffc089"
+        android:gravity="center_vertical|center_horizontal"
+        android:focusableInTouchMode="false"
+        android:fontFamily="sans-serif-light" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,36 +34,60 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/add_to_wishlist_text"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:fontFamily="sans-serif-light"
+        android:textSize="22dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_above="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#ff93d3ff"
+        android:textColor="#FFFFFF" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
         android:text="@string/add_text"
         android:id="@+id/add_button"
+        android:fontFamily="sans-serif-light"
         android:layout_below="@+id/price_field"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp" />
+        android:layout_alignLeft="@+id/cancel_button"
+        android:layout_alignStart="@+id/cancel_button"
+        android:layout_marginTop="28dp"
+        android:background="#ff93d3ff"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
         android:text="@string/cancel_text"
         android:id="@+id/cancel_button"
         android:layout_below="@+id/add_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:fontFamily="sans-serif-light"
+        android:background="#ff93d3ff"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/item_text"
         android:id="@+id/textView3"
         android:layout_above="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="77dp" />
+        android:layout_marginBottom="77dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ffffc089"
+        android:fontFamily="sans-serif-light" />
 
     <EditText
         android:layout_width="wrap_content"
