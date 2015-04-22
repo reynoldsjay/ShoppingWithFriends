@@ -1,6 +1,7 @@
 package com.generict.shoppingwithfriends;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -12,30 +13,58 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
+import android.content.Intent;
+import android.app.AlertDialog;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.model.Marker;
 
 
 public class MapsActivity extends FragmentActivity {
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    // Might be null if Google Play services APK is not available.
+    private GoogleMap mMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
-        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        LocationListener mlocListener = new MyLocationListener(this);
-        mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
+
+        final Context c = this;
+
+        mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                new AlertDialog.Builder(c)
+                        .setTitle("Add To Wishlist")
+                        .setMessage("Item name: " + marker.getTitle()
+                                + "\nItem price: " + marker.getSnippet()
+                                + "\nDo you want to add this item to your wish list?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(MapsActivity.this, AddToWishListActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                return true;
+            }
+        });
     }
 
     @Override
@@ -79,50 +108,43 @@ public class MapsActivity extends FragmentActivity {
      * PARSE QUERY IS EMPTY RIGHT NOW
      */
     private void setUpMap() {
-
+        // Some hard coded markers
         ArrayList<LatLng> hcList = new ArrayList<>(10);
         hcList.add(new LatLng(33.7744, -84.3965));
-        hcList.add(new LatLng(33.7744, -84.3865));
-        hcList.add(new LatLng(33.7744, -84.3765));
-        hcList.add(new LatLng(33.7744, -84.3665));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(1)).title("Clough"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(2)).title("Clough2"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(3)).title("Clough3"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(4)).title("Clough4"));
+        hcList.add(new LatLng(33.7724, -84.3865));
+        hcList.add(new LatLng(33.7794, -84.3765));
+        hcList.add(new LatLng(33.7704, -84.3665));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(0)).title("Coffee"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(1)).title("X-Box"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(2)).title("T-shirt"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(3)).title("Laptop"));
 
-
-
-        ParseObject.registerSubclass(SalesReport.class);
-        final ArrayList<SalesReport> salesReports = new ArrayList<>(20);
-        Log.d("MapsActivity:", "setUpMap in action");
-        // BUG = PARSE QUERY IS EMPTY
-        // CANNOT FIGURE OUT WHY
-        ParseQuery<SalesReport> query = ParseQuery.getQuery(SalesReport.class).setLimit(100);
-        query.findInBackground(new FindCallback<SalesReport>() {
-            @Override
-            public void done(List<SalesReport> reports, ParseException e) {
-                if (e == null) {
-                    for (SalesReport report : reports) {
-                        salesReports.add(report);
-                    }
-                } else {
-                    Log.d("Query exc raised....", "Exception!");
-                }
+        // Some dynamic markers based on sales reports
+        final ArrayList<ParseObject> salesReports = new ArrayList<>(20);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("SalesReport");
+        try {
+            List<ParseObject> queryList = query.find();
+            for (ParseObject item : queryList) {
+                salesReports.add(item);
             }
-        });
+        } catch (ParseException e) {
+            Log.e("Exception", e.getMessage());
+        }
+
+        // List to hold LatLng objects
         ArrayList<LatLng> list = new ArrayList<>(20);
-        //can't get the sales reports
-        for (SalesReport saleReport : salesReports) {
-            Log.d("MapsActivity: ", "sale: " + saleReport.getString("name"));
+
+        // Add sales reports' addresses to LatLng list
+        for (ParseObject saleReport : salesReports) {
             list.add(getLocationFromAddress(saleReport.getString("location")));
         }
-        Log.d("MapsActivity:", "list size: " + list.size());
-        //list is a list of lat/lng
+
+        // Add marker for all LatLng objects
         for (int i = 0; i < list.size(); i++) {
-            mMap.addMarker(new MarkerOptions().position(list.get(i)).title(list.get(i).toString()));
+            mMap.addMarker(new MarkerOptions().position(list.get(i))
+                    .title(salesReports.get(i).getString("name")).snippet("Price" + (salesReports.get(i).getNumber("price"))));
         }
     }
-
 
     /**
      * Private helper method for getting a point based on string address
@@ -137,12 +159,12 @@ public class MapsActivity extends FragmentActivity {
             address = coder.getFromLocationName(strAddress, 5);
             if (address == null) {
                 return null;
+            } else {
+                Address location = address.get(0);
+                p1 = new LatLng((int) (location.getLatitude() * 1E6),
+                        (int) (location.getLongitude() * 1E6));
+                return p1;
             }
-            Address location = address.get(0);
-            p1 = new LatLng((int) (location.getLatitude() * 1E6),
-                    (int) (location.getLongitude() * 1E6));
-
-            return p1;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -162,7 +184,6 @@ public class MapsActivity extends FragmentActivity {
         }
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16));
     }
-
 
     /**
      * Private helper method for getting user's current loc

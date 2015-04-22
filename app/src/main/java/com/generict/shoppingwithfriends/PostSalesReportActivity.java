@@ -47,15 +47,6 @@ public class PostSalesReportActivity extends ActionBarActivity {
                 add.setPrice(price);
                 add.setLocation(location);
                 add.saveInBackground();
-
-                // PUSH SENT WHEN NEW ITEM IS ADDED
-                ParsePush push = new ParsePush();
-                push.setChannel("testing");
-                push.setMessage("New Item has been added!");
-                push.sendInBackground();
-
-                Intent intent = new Intent(activity, ApplicationHomeActivity.class);
-                startActivity(intent);
             }
         });
     }
