@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.parse.ParsePush;
 
 /**
  * Class to help you post sales reports
@@ -46,6 +47,13 @@ public class PostSalesReportActivity extends ActionBarActivity {
                 add.setPrice(price);
                 add.setLocation(location);
                 add.saveInBackground();
+
+                // PUSH SENT WHEN NEW ITEM IS ADDED
+                ParsePush push = new ParsePush();
+                push.setChannel("testing");
+                push.setMessage("New Item has been added!");
+                push.sendInBackground();
+
                 Intent intent = new Intent(activity, ApplicationHomeActivity.class);
                 startActivity(intent);
             }

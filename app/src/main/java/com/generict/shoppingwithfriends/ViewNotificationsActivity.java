@@ -98,7 +98,7 @@ public class ViewNotificationsActivity extends ListActivity {
         @Override
         protected Void doInBackground(Void... params) {
             ArrayList<Item> items = (ArrayList<Item>) ParseUser.getCurrentUser().get("WishList");
-            match = new ArrayList<>();
+            match = new ArrayList<SalesReport>();
             for(final Item item : items) {
                 ParseQuery<SalesReport> query = ParseQuery.getQuery("SalesReport");
                 //I have a try catch here to handle early objects that don't have all attributes

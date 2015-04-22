@@ -8,6 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import com.parse.ParseObject;
+import com.parse.Parse;
+import com.parse.*;
+import java.util.logging.Logger;
+import android.util.Log;
+import com.parse.SaveCallback;
+
+import com.parse.Parse.*;
+
 
 /**
  * App home view
@@ -73,8 +82,6 @@ public class ApplicationHomeActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
 
