@@ -88,6 +88,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-light"
         android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp" />
 
 </RelativeLayout>
