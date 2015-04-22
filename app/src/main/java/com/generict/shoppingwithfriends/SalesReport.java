@@ -8,7 +8,6 @@ import com.parse.ParseObject;
  */
 @ParseClassName("SalesReport")
 class SalesReport extends ParseObject {
-
     /**
      * Constructor for sales report
      */
@@ -59,9 +58,4 @@ class SalesReport extends ParseObject {
      * @param location of store that sells the item
      */
     public String getLocation() { return getString("location"); }
-
-
-
-
-
 }

@@ -42,5 +42,9 @@
     <string name="go_text">Go</string>
     <string name="location_text">Location</string>
     <string name="icon_description">Icon</string>
+    <string name="title_activity_place_picker">PlacePicker</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
