@@ -5,6 +5,32 @@
     android:gravity="center"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="206dp"
+        android:layout_height="30dp"
+        android:text="@string/login_button"
+        tools:ignore="ButtonStyle"
+        android:textSize="20dp"
+        android:background="#ffbebfff"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/registration_button"
+        android:layout_width="206dp"
+        android:layout_height="30dp"
+        android:text="@string/registration_button"
+        tools:ignore="ButtonStyle"
+        android:layout_marginTop="0dp"
+        android:textSize="20dp"
+        android:background="#ffffbf93"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,19 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/login_button"
-            tools:ignore="ButtonStyle" />
-        <Button
-            android:id="@+id/registration_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/registration_button"
-            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
