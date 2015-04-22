@@ -8,54 +8,86 @@
 
     <Button
         android:id="@+id/logout_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/logout_text"
         android:layout_gravity="center_horizontal"
+        android:background="#ffff9d8e"
         android:layout_below="@+id/friends_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/view_friends_text"
         android:id="@+id/friends_button"
+        android:background="#ffff9d8e"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/wish_list_button"
+        android:layout_alignStart="@+id/wish_list_button"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/sales_report_text"
         android:id="@+id/sales_report_button"
+        android:background="#ffff9d8e"
         android:layout_above="@+id/wish_list_button"
-        android:layout_alignRight="@+id/friends_button"
-        android:layout_alignEnd="@+id/friends_button" />
+        android:layout_alignLeft="@+id/logout_button"
+        android:layout_alignStart="@+id/logout_button"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/view_notifications_text"
         android:id="@+id/view_notifications_button"
+        android:background="#ffff9d8e"
         android:layout_above="@+id/sales_report_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/sales_report_button"
+        android:layout_alignStart="@+id/sales_report_button"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/add_to_wishlist_text"
         android:id="@+id/wish_list_button"
+        android:background="#ffff9d8e"
         android:layout_above="@+id/friends_button"
-        android:layout_alignRight="@+id/logout_button"
-        android:layout_alignEnd="@+id/logout_button" />
+        android:layout_alignLeft="@+id/sales_report_button"
+        android:layout_alignStart="@+id/sales_report_button"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/map_view_text"
         android:id="@+id/maps_button"
+        android:background="#ffff9d8e"
         android:layout_below="@+id/logout_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
 </RelativeLayout>
