@@ -19,8 +19,8 @@ public class ShoppingWithFriendsApplication extends Application {
     public void onCreate() {
         // Enable Local data store.
         Parse.enableLocalDatastore(this);
-        ParseObject.registerSubclass(Item.class);
-        ParseObject.registerSubclass(SalesReport.class);
+//        ParseObject.registerSubclass(Item.class);
+//        ParseObject.registerSubclass(SalesReport.class);
         Parse.initialize(this, "nm6pIvVQ1qGqOoDWDRgcsxvasrt6LPZF7WKmQ8HM", "qfjcEM85Wpmw6ozG2Fzrmf0vE5Dyc9XOx1x6MnDd");
         ParsePush.subscribeInBackground("testing", new SaveCallback() {
             @Override
@@ -32,5 +32,11 @@ public class ShoppingWithFriendsApplication extends Application {
                 }
             }
         });
+
+//        // PUSH SENT WHEN NEW ITEM IS ADDED
+//        ParsePush push = new ParsePush();
+//        push.setChannel("testing");
+//        push.setMessage("New Item has been added by your friend!");
+//        push.sendInBackground();
     }
 }
