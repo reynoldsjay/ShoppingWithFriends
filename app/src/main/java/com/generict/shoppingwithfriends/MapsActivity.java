@@ -31,7 +31,6 @@ public class MapsActivity extends FragmentActivity {
     // Might be null if Google Play services APK is not available.
     private GoogleMap mMap;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,39 +110,40 @@ public class MapsActivity extends FragmentActivity {
         // Some hard coded markers
         ArrayList<LatLng> hcList = new ArrayList<>(10);
         hcList.add(new LatLng(33.7744, -84.3965));
-        hcList.add(new LatLng(33.7724, -84.3865));
-        hcList.add(new LatLng(33.7794, -84.3765));
-        hcList.add(new LatLng(33.7704, -84.3665));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(0)).title("Coffee"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(1)).title("X-Box"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(2)).title("T-shirt"));
-        mMap.addMarker(new MarkerOptions().position(hcList.get(3)).title("Laptop"));
+        hcList.add(new LatLng(33.7724, -84.3925));
+        hcList.add(new LatLng(33.7794, -84.3995));
+        hcList.add(new LatLng(33.7704, -84.3900));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(0)).title("Coffee").snippet("$10"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(1)).title("X-Box").snippet("$60"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(2)).title("T-shirt").snippet("$5"));
+        mMap.addMarker(new MarkerOptions().position(hcList.get(3)).title("Laptop").snippet("$800"));
 
-        // Some dynamic markers based on sales reports
-        final ArrayList<ParseObject> salesReports = new ArrayList<>(20);
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("SalesReport");
-        try {
-            List<ParseObject> queryList = query.find();
-            for (ParseObject item : queryList) {
-                salesReports.add(item);
-            }
-        } catch (ParseException e) {
-            Log.e("Exception", e.getMessage());
-        }
-
-        // List to hold LatLng objects
-        ArrayList<LatLng> list = new ArrayList<>(20);
-
-        // Add sales reports' addresses to LatLng list
-        for (ParseObject saleReport : salesReports) {
-            list.add(getLocationFromAddress(saleReport.getString("location")));
-        }
-
-        // Add marker for all LatLng objects
-        for (int i = 0; i < list.size(); i++) {
-            mMap.addMarker(new MarkerOptions().position(list.get(i))
-                    .title(salesReports.get(i).getString("name")).snippet("Price" + (salesReports.get(i).getNumber("price"))));
-        }
+        // works if SalesReport is not a subclass of ParseObject?
+//        // Some dynamic markers based on sales reports
+//        final ArrayList<ParseObject> salesReports = new ArrayList<>(20);
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("SalesReport");
+//        try {
+//            List<ParseObject> queryList = query.find();
+//            for (ParseObject item : queryList) {
+//                salesReports.add(item);
+//            }
+//        } catch (ParseException e) {
+//            Log.e("Exception", e.getMessage());
+//        }
+//
+//        // List to hold LatLng objects
+//        ArrayList<LatLng> list = new ArrayList<>(20);
+//
+//        // Add sales reports' addresses to LatLng list
+//        for (ParseObject saleReport : salesReports) {
+//            list.add(getLocationFromAddress(saleReport.getString("location")));
+//        }
+//
+//        // Add marker for all LatLng objects
+//        for (int i = 0; i < list.size(); i++) {
+//            mMap.addMarker(new MarkerOptions().position(list.get(i))
+//                    .title(salesReports.get(i).getString("name")).snippet("Price" + (salesReports.get(i).getNumber("price"))));
+//        }
     }
 
     /**
