@@ -7,15 +7,21 @@
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:background="#ffaeff00"
+        android:layout_height="416dp"
+        android:background="#fffaff9f"
         style="@style/Base.V14.Theme.AppCompat.Light"
         android:clickable="false" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/back_text"
         android:id="@+id/back_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#ffff8866"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-light" />
 </LinearLayout>

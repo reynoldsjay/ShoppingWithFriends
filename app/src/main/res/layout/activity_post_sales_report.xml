@@ -7,7 +7,7 @@
     tools:context="com.generict.shoppingwithfriends.PostSalesReportActivity">
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
@@ -16,57 +16,79 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/price_text"
         android:id="@+id/textView"
         android:layout_below="@+id/item_name_field"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_alignStart="@+id/textView3"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ff706aff"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/sales_report_text"
+        android:text="@string/post_new_sale"
         android:id="@+id/textView2"
+        android:fontFamily="sans-serif-light"
+        android:textSize="25dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="@string/add_text"
         android:id="@+id/add_button"
         android:layout_above="@+id/cancel_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#ff78bcff"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="@string/cancel_text"
         android:id="@+id/cancel_button"
+        android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="98dp" />
+        android:background="#ff78bcff"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/item_text"
         android:id="@+id/textView3"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
+        android:layout_marginTop="42dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ff706aff"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:id="@+id/item_name_field"
-        android:inputType="number"
+        android:inputType="number|text"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/price_field"
         android:layout_alignStart="@+id/price_field"
@@ -74,17 +96,21 @@
         android:layout_alignEnd="@+id/price_field" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/location_text"
         android:id="@+id/textView4"
         android:layout_below="@+id/price_field"
-        android:layout_alignRight="@+id/cancel_button"
-        android:layout_alignEnd="@+id/cancel_button" />
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="#ff706aff"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"

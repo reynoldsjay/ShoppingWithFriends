@@ -8,20 +8,26 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/back_text"
         android:id="@+id/back_button"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/android:list"
+        android:layout_centerHorizontal="true"
+        android:background="#ffff8866"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <ListView
         style="@style/Base.V14.Theme.AppCompat.Light"
         android:layout_width="match_parent"
-        android:layout_height="444dp"
+        android:layout_height="416dp"
         android:id="@+id/android:list"
-        android:background="#ffaeff00"
+        android:background="#fffaff9f"
         android:clickable="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
