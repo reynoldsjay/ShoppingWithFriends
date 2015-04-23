@@ -2,29 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="444dp"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
         android:id="@android:id/list"
-        android:background="#ffaeff00"
+        android:background="#fffaff9f"
         android:textSize="20sp"
         android:minHeight="20dp"
         style="@style/Base.V14.Theme.AppCompat.Light"
-        android:clickable="false" />
+        android:clickable="false"
+        android:layout_weight="2.70" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/search_and_add_text"
         android:id="@+id/add_friend_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#ffff8866"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-light" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="260dp"
+        android:layout_height="35dp"
         android:text="@string/back_text"
         android:id="@+id/back_button"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#ffff8866"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-light" />
 </LinearLayout>
