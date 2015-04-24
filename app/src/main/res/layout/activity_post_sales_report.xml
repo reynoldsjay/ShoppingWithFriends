@@ -88,7 +88,7 @@
         android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:id="@+id/item_name_field"
-        android:inputType="number|text"
+        android:inputType="text"
         android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/price_field"
         android:layout_alignStart="@+id/price_field"

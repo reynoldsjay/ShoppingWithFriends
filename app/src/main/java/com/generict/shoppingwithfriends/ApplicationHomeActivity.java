@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.ParseUser;
+
 
 /**
  * App home view
@@ -39,6 +41,7 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         mLogout = (Button) findViewById(R.id.logout_button);
         mLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                ParseUser.logOut();
                 Intent intent = new Intent(activity, LoginRegistrationActivity.class);
                 startActivity(intent);
             }
