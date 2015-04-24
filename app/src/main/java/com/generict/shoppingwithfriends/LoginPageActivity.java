@@ -9,11 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
-import com.parse.ParseUser;
 import com.parse.ParseException;
+import com.parse.ParseUser;
 
 /**
  * Login page view
@@ -24,6 +25,7 @@ public class LoginPageActivity extends ActionBarActivity {
 
     private EditText mUsernameEditText;
     private EditText mPasswordEditText;
+    private TextView mForgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,13 @@ public class LoginPageActivity extends ActionBarActivity {
                         }
                     }
                 });
+            }
+        });
+        mForgotPassword = (TextView) findViewById(R.id.forgot_password_textview);
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
     }

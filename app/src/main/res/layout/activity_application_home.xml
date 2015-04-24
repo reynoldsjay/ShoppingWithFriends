@@ -89,6 +89,19 @@
         android:fontFamily="sans-serif-light"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="260dp"
+        android:layout_height="35dp"
+        android:text="Tutorial"
+        android:id="@+id/tutorial_button"
+        android:background="#ffff9d8e"
+        android:fontFamily="sans-serif-light"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_below="@+id/maps_button"
+        android:layout_alignLeft="@+id/maps_button"
+        android:layout_alignStart="@+id/maps_button" />
 
 </RelativeLayout>

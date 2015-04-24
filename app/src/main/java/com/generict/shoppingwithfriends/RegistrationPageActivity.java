@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,6 +76,7 @@ public class RegistrationPageActivity extends ActionBarActivity {
                                 Intent intent = new Intent(activity, LoginPageActivity.class);
                                 startActivity(intent);
                             } else {
+                                Log.d("LoginRegistration", e.toString());
                                 Toast.makeText(RegistrationPageActivity.this, "Invalid registration", Toast.LENGTH_SHORT).show();
                             }
                         }

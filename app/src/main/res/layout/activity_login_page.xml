@@ -111,4 +111,11 @@
         android:fontFamily="sans-serif-light"
         android:textColor="#ffffffff" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/forgot_password_textview"
+        android:text="Forgot Password?"
+        android:layout_marginTop="10dp"/>
+
 </LinearLayout>

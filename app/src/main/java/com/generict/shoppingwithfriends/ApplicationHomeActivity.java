@@ -8,14 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import com.parse.ParseObject;
-import com.parse.Parse;
-import com.parse.*;
-import java.util.logging.Logger;
-import android.util.Log;
-import com.parse.SaveCallback;
-
-import com.parse.Parse.*;
 
 
 /**
@@ -35,6 +27,7 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         Button mSalesReport;
         Button mViewNotifications;
         Button mMaps;
+        Button mTutorial;
         setContentView(R.layout.activity_application_home);
         mWishListButton = (Button) findViewById(R.id.wish_list_button);
         mWishListButton.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +72,14 @@ public class ApplicationHomeActivity extends ActionBarActivity {
         mMaps.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(activity, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mTutorial = (Button) findViewById(R.id.tutorial_button);
+        mTutorial.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, TutorialActivity.class);
                 startActivity(intent);
             }
         });
